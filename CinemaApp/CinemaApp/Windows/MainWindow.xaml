@@ -1,0 +1,173 @@
+﻿<Window x:Class="CinemaApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CinemaApp"
+        mc:Ignorable="d"
+		xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal" 
+        TextOptions.TextRenderingMode="Auto"        
+        Background="{DynamicResource VeryLightText}"
+        FontFamily="{DynamicResource MaterialDesignFont}"
+        Title="MainWindow" Height="450" Width="800" WindowStyle="None" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Icon="/CinemaApp;component/Resources/icon.png">
+	<Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="1*"/>
+			<RowDefinition Height="2*"/>
+			<RowDefinition Height="20*"/>
+		</Grid.RowDefinitions>
+		<Grid Grid.Row="0" Background="{DynamicResource OrangeGradient}">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="10*"/>
+				<ColumnDefinition Width="1*"/>
+			</Grid.ColumnDefinitions>
+			<Grid Grid.Column="1">
+				<DockPanel Height="20" Background="{x:Null}" >
+					<Grid>
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition Width="1*"/>
+							<ColumnDefinition Width="1*"/>
+							<ColumnDefinition Width="1*"/>
+						</Grid.ColumnDefinitions>
+						<Grid Grid.Column="0">
+							<Button x:Name="btnThink" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}"   Height="20" Width="20" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" Click="btnThink_Click">
+								<materialDesign:PackIcon Kind="ArrowCollapseAll"/>
+							</Button>
+						</Grid>
+						<Grid Grid.Column="1">
+							<Button x:Name="btnWide" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Height="20" Width="20" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" Click="btnWide_Click">
+								<materialDesign:PackIcon Kind="Fullscreen"/>
+							</Button>
+						</Grid>
+						<Grid Grid.Column="2">
+							<Button  x:Name="btnClose" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Width="20" Height="20" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" Click="btnClose_Click">
+								<materialDesign:PackIcon Kind="CloseOutline"/>
+							</Button>
+						</Grid>
+					</Grid>
+				</DockPanel>
+			</Grid>
+		</Grid>
+		<Grid Grid.Row="1" Background="{DynamicResource OrangeGradient}">
+			<TextBlock x:Name="Title" Style="{DynamicResource FontBW}" TextAlignment="Center" Padding="0" Text="df" FontSize="24"/>
+		</Grid>
+		<Grid Grid.Row="2">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="4*"/>
+				<ColumnDefinition Width="16*"/>
+			</Grid.ColumnDefinitions>
+			<Grid Grid.Column="0" x:Name="menuGrid" Margin="0 0 0 0">
+				<Grid.Background>
+					<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+						<LinearGradientBrush.RelativeTransform>
+							<TransformGroup>
+								<ScaleTransform CenterY="0.5" CenterX="0.5"/>
+								<SkewTransform CenterY="0.5" CenterX="0.5" AngleY="-30" AngleX="-20"/>
+								<RotateTransform CenterY="0.5" CenterX="0.5"/>
+								<TranslateTransform/>
+							</TransformGroup>
+						</LinearGradientBrush.RelativeTransform>
+						<GradientStop Color="#FFD84315" Offset="0"/>
+						<GradientStop Color="#FFFFAB91" Offset="1"/>
+						<GradientStop Color="#FFF4511E" Offset="0.387"/>
+						<GradientStop Color="#FFF97A53" Offset="0.711"/>
+					</LinearGradientBrush>
+				</Grid.Background>
+				<StackPanel Grid.Column="0" Panel.ZIndex="2" Background="{x:Null}" x:Name="spLeft"   Grid.ColumnSpan="2" >
+					<!--<ToggleButton x:Name="menuButton" Background="Black"  Style="{StaticResource MaterialDesignSwitchAccentToggleButton}" ToolTip="MaterialDesignSwitchAccentToggleButton" Margin="1" HorizontalAlignment="Left" Height="12" VerticalAlignment="Top"/>-->
+					<DockPanel Style="{DynamicResource MenuItem}"  >
+						<Button Background="{x:Null}" Click="Main_Click"  Height="40">
+							<DockPanel HorizontalAlignment="Left" Width="300" Margin="-15 0 0 0">
+								<materialDesign:PackIcon Kind="LaptopMac" Style="{DynamicResource MenuImg}"/>
+								<Label Style="{DynamicResource MenuLabel}" Content="Поиск по жанру" />
+							</DockPanel>
+						</Button>
+					</DockPanel>
+
+					<DockPanel Style="{DynamicResource MenuItem}" >
+						<Button Click="Base_Click" Background="{x:Null}"  Height="40" >
+							<DockPanel HorizontalAlignment="Left" Width="300" Margin="-17 0 0 0">
+								<materialDesign:PackIcon Kind="Notebook" Style="{DynamicResource MenuImg}"  />
+								<Label Style="{DynamicResource MenuLabel}" Content="Поиск по названию" />
+							</DockPanel>
+						</Button>
+					</DockPanel>
+
+					<DockPanel Style="{DynamicResource MenuItem}">
+						<Button Background="{x:Null}"   Height="40">
+							<DockPanel HorizontalAlignment="Left" Width="300" Margin="-17 0 0 0">
+								<materialDesign:PackIcon Kind="GlassTulip" Style="{DynamicResource MenuImg}"/>
+								<Label Style="{DynamicResource MenuLabel}" Content="Поиск по году" Width="196"/>
+							</DockPanel>
+						</Button>
+					</DockPanel>
+
+					<DockPanel Style="{DynamicResource MenuItem}">
+						<Button Background="{x:Null}"   Height="40">
+							<DockPanel HorizontalAlignment="Left" Width="300" Margin="-17 0 0 0">
+								<materialDesign:PackIcon Kind="GlassTulip" Style="{DynamicResource MenuImg}"/>
+								<Label Style="{DynamicResource MenuLabel}" Content="Поиск по артистам" Width="196"/>
+							</DockPanel>
+						</Button>
+					</DockPanel>
+
+					<DockPanel Style="{DynamicResource MenuItem}">
+						<Button Background="{x:Null}"   Height="40">
+							<DockPanel HorizontalAlignment="Left" Width="300" Margin="-17 0 0 0">
+								<materialDesign:PackIcon Kind="GlassTulip" Style="{DynamicResource MenuImg}"/>
+								<Label Style="{DynamicResource MenuLabel}" Content="Расширенный поиск" Width="196"/>
+							</DockPanel>
+						</Button>
+					</DockPanel>
+
+					<DockPanel Style="{DynamicResource MenuItem}">
+						<Button Background="{x:Null}"   Height="40">
+							<DockPanel HorizontalAlignment="Left" Width="300" Margin="-17 0 0 0">
+								<materialDesign:PackIcon Kind="GlassTulip" Style="{DynamicResource MenuImg}"/>
+								<Label Style="{DynamicResource MenuLabel}" Content="Трейлеры" Width="196"/>
+							</DockPanel>
+						</Button>
+					</DockPanel>
+
+					<DockPanel Style="{DynamicResource MenuItem}">
+						<Button Background="{x:Null}"   Height="40">
+							<DockPanel HorizontalAlignment="Left" Width="300" Margin="-17 0 0 0">
+								<materialDesign:PackIcon Kind="GlassTulip" Style="{DynamicResource MenuImg}"/>
+								<Label Style="{DynamicResource MenuLabel}" Content="Мои билеты" Width="196"/>
+							</DockPanel>
+						</Button>
+					</DockPanel>
+				</StackPanel>
+				<!--<Grid.RowDefinitions>
+					<RowDefinition Height="1*"/>
+					<RowDefinition Height="27*"/>
+				</Grid.RowDefinitions>-->
+				<!--<Grid Grid.Row="0">
+					<ToggleButton x:Name="menuButton"   Style="{StaticResource MaterialDesignSwitchAccentToggleButton}" ToolTip="MaterialDesignSwitchAccentToggleButton" Margin="1" HorizontalAlignment="Left" Height="12" VerticalAlignment="Top"/>
+				</Grid>
+				<Grid Grid.Row="1">
+					<StackPanel>
+						<DockPanel>
+
+						</DockPanel>
+					</StackPanel>
+				</Grid>-->
+			</Grid>
+			<Grid Grid.Column="1" Panel.ZIndex="0">
+				<Grid.Background>
+					<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+						<GradientStop Color="#FFF4E7E3" Offset="1"/>
+						<GradientStop Color="#FFF4E7E3"/>
+						<GradientStop Color="#FFFFCCBC" Offset="0.406"/>
+						<GradientStop Color="#FFFFCCBC" Offset="0.616"/>
+					</LinearGradientBrush>
+				</Grid.Background>
+			</Grid>
+		</Grid>
+	</Grid>
+
+</Window>
