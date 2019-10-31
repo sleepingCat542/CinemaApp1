@@ -10,19 +10,20 @@ drop table USERS;
 drop table SESSION;
 drop table HALL;
 drop table CINEMA;
+drop table GENRE_MOVIE;
+drop table ACTOR_MOVIE;
 drop table MOVIE;
 drop table GENRE;
 drop table ACTOR;
 drop table STUDIO;
-drop table Director;
 drop table COUNTRY;
+
 
 
 --Country
 create table COUNTRY(
 ID varchar(10) primary key not null,
 NAME nvarchar(70) unique not null);
-
 
 --Studio					
 create table STUDIO(
@@ -32,11 +33,12 @@ COUNTRY_ID varchar(10) foreign key references COUNTRY(ID),
 YEAR_OF_FOUNDATION int,     
 IMAGE varbinary(max));
 
-
 --Genre
 create table GENRE(                 
 ID int primary key IDENTITY(1, 1),
 NAME nvarchar(30) unique not null);
+
+
 
 --Actor
 create table ACTOR(
@@ -46,7 +48,6 @@ SURNAME nvarchar(20),
 COUNTRY_ID varchar(10) foreign key references Country(ID),
 AGE int,
 IMAGE varbinary(max));
-многие ко многим
 
 --Movie
 create table MOVIE(
@@ -54,17 +55,41 @@ ID uniqueidentifier rowguidcol DEFAULT NEWSEQUENTIALID(),
 NAME nvarchar(max) not null,
 RELEASE date,
 COUNTRY_ID varchar(10) foreign key references COUNTRY(ID),
-GENRE_ID int foreign key references GENRE(ID),
+--GENRE_ID int foreign key references GENRE(ID),
 RUNNING_TIME int,
 STUDIO_ID uniqueidentifier foreign key references STUDIO(ID),
 SCREENPLAY nvarchar(50),
 COMPOSER nvarchar(50),
-ACTOR_ID uniqueidentifier foreign key references ACTOR(ID),
+--ACTOR_ID uniqueidentifier foreign key references ACTOR(ID),
 PLOT nvarchar(max),
 IMAGE varbinary(max),
 CONSTRAINT PK_Movie PRIMARY KEY CLUSTERED(ID));
 
 alter table MOVIE ADD TRAILER varbinary(max) NULL
+
+
+--GENRE AND MOVIE (many-to-many)
+CREATE TABLE GENRE_MOVIE (
+    GENRE_ID INT NOT NULL,
+    MOVIE_ID uniqueidentifier NOT NULL,
+    PRIMARY KEY (GENRE_ID, MOVIE_ID),
+    CONSTRAINT FK_MOVIE_GENRE FOREIGN KEY (MOVIE_ID) 
+        REFERENCES MOVIE (ID) ON DELETE CASCADE,
+    CONSTRAINT FK_GENRE FOREIGN KEY (GENRE_ID) 
+        REFERENCES GENRE (ID) ON DELETE CASCADE
+)
+
+--ACTOR AND MOVIE (many-to-many)
+CREATE TABLE ACTOR_MOVIE (
+    ACTOR_ID uniqueidentifier NOT NULL,
+    MOVIE_ID uniqueidentifier NOT NULL,
+    PRIMARY KEY (ACTOR_ID, MOVIE_ID),
+    CONSTRAINT FK_MOVIE_ACTOR FOREIGN KEY (MOVIE_ID) 
+        REFERENCES MOVIE (ID) ON DELETE CASCADE,
+    CONSTRAINT FK_ACTOR FOREIGN KEY (ACTOR_ID) 
+        REFERENCES ACTOR (ID) ON DELETE CASCADE
+)
+
 
 --Cinema
 create table CINEMA(
@@ -121,8 +146,6 @@ SESSION_ID int foreign key references SESSION(ID),
 PURCHASE_ID int foreign key references PURCHASE(ID),
 ROW int not null,
 SEAT int not null);
-
-
 
 delete TICKETS;
 delete PURCHASE;
