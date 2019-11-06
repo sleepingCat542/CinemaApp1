@@ -38,8 +38,6 @@ create table GENRE(
 ID int primary key IDENTITY(1, 1),
 NAME nvarchar(30) unique not null);
 
-
-
 --Actor
 create table ACTOR(
 ID uniqueidentifier primary key rowguidcol DEFAULT NEWSEQUENTIALID(),
@@ -66,7 +64,6 @@ IMAGE varbinary(max),
 CONSTRAINT PK_Movie PRIMARY KEY CLUSTERED(ID));
 
 alter table MOVIE ADD TRAILER varbinary(max) NULL
-
 
 --GENRE AND MOVIE (many-to-many)
 CREATE TABLE GENRE_MOVIE (
@@ -119,12 +116,6 @@ TIME time(7) not null,
 COST int not null,
 FREESEATS int);
 
-
- --Role
-
-
-
-
 --Users
 create table USERS(
 ID uniqueidentifier primary key rowguidcol DEFAULT NEWSEQUENTIALID(),
@@ -147,15 +138,5 @@ PURCHASE_ID int foreign key references PURCHASE(ID),
 ROW int not null,
 SEAT int not null);
 
-delete TICKETS;
-delete PURCHASE;
-delete USERS;
-delete SESSION;
-delete HALL;
-delete MOVIE;
 
-delete GENRE;
-delete ACTOR;
-delete STUDIO;
-delete COUNTRY;
 
