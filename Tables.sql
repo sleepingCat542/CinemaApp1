@@ -120,7 +120,7 @@ FREESEATS int);
 create table USERS(
 ID uniqueidentifier primary key rowguidcol DEFAULT NEWSEQUENTIALID(),
 LOGIN nvarchar(50) not null,
-PASSWORD nvarchar(max) not null,
+PASSWORD nvarchar(30) not null,
 EMAIL nvarchar(50) not null);
 
 --Purchase
