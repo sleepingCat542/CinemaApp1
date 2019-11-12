@@ -22,14 +22,14 @@ drop table COUNTRY;
 
 --Country
 create table COUNTRY(
-ID varchar(10) primary key not null,
+ID nvarchar(10) primary key not null,
 NAME nvarchar(70) unique not null);
 
 --Studio					
 create table STUDIO(
 ID uniqueidentifier primary key rowguidcol DEFAULT NEWSEQUENTIALID(),
 NAME nvarchar(20) not null,
-COUNTRY_ID varchar(10) foreign key references COUNTRY(ID),
+COUNTRY_ID nvarchar(10) foreign key references COUNTRY(ID),
 YEAR_OF_FOUNDATION int,     
 IMAGE varbinary(max));
 
@@ -43,7 +43,7 @@ create table ACTOR(
 ID uniqueidentifier primary key rowguidcol DEFAULT NEWSEQUENTIALID(),
 NAME nvarchar(20) not null,
 SURNAME nvarchar(20),
-COUNTRY_ID varchar(10) foreign key references Country(ID),
+COUNTRY_ID nvarchar(10) foreign key references Country(ID),
 AGE int,
 IMAGE varbinary(max));
 
@@ -52,11 +52,11 @@ create table MOVIE(
 ID uniqueidentifier rowguidcol DEFAULT NEWSEQUENTIALID(),
 NAME nvarchar(max) not null,
 RELEASE date,
-COUNTRY_ID varchar(10) foreign key references COUNTRY(ID),
+COUNTRY_ID nvarchar(10) foreign key references COUNTRY(ID),
 --GENRE_ID int foreign key references GENRE(ID),
 RUNNING_TIME int,
 STUDIO_ID uniqueidentifier foreign key references STUDIO(ID),
-SCREENPLAY nvarchar(50),
+SCREENPLAY nvarchar(1000),
 COMPOSER nvarchar(50),
 --ACTOR_ID uniqueidentifier foreign key references ACTOR(ID),
 PLOT nvarchar(max),
@@ -92,11 +92,11 @@ CREATE TABLE ACTOR_MOVIE (
 create table CINEMA(
 ID int primary key IDENTITY(1, 1),
 NAME nvarchar(30) not null,
-ADDRESS nvarchar(max),
-WEBSITE nvarchar(max),
-REGION nvarchar(30),
+ADDRESS nvarchar(100),
+WEBSITE nvarchar(100),
+CITY nvarchar(30),
 NUMBER_OF_HALLS int,
-TICKET_OFFICE nvarchar(30));
+TIMETABLE nvarchar(200));
 
 --Hall
 create table HALL(
@@ -126,9 +126,9 @@ EMAIL nvarchar(50) not null);
 --Purchase
 create table PURCHASE(
 ID int primary key IDENTITY(1, 1),
-USER_ID uniqueidentifier foreign key references USERS(ID),
+USER_ID uniqueidentifier foreign key references USERS(ID) not null,
 DATE smalldatetime);
-ALTER TABLE PURCHASE ADD PRICE INT;
+ALTER TABLE PURCHASE ADD UNICK_TICKET nvarchar(20);
 
 --Tickets
 create table TICKETS(

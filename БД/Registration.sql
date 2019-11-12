@@ -12,10 +12,9 @@ CREATE PROCEDURE Registration
 		set @check_login =(select count(*) FROM Users WHERE LOGIN = @login);
 		if(@check_login!= 0)
 			SET @message = @message + 'Такой логин уже существует!/n';
-		--if(@email not like '%_@__%.__%')
-		--	SET @message = @message + 'Неверный e-mail!/n';
-		--if(@check_login!= 0 and @email like '_%@__%.__%')
-		if(@check_login= 0)
+		else if(@email not like '%_@__%.__%')
+			SET @message = @message + 'Неверный e-mail!/n';
+		else
 			BEGIN
 				SET @HashThis = CONVERT(nvarchar(max), @password); 
 				SET @HashThis =	(SELECT HASHBYTES('SHA2_256', @HashThis));  
@@ -30,15 +29,30 @@ drop procedure Registration;
 select * from USERS;
 delete from USERS;
 
-DECLARE @SalesYTDBySalesPerson int;  
-DECLARE @SalesYTDBySalesPerson2 nvarchar(200); 
-execute Registration 
-N'Yum',
-'181813Yu',
-N'yuki.sai@mail',
-@rc=@SalesYTDBySalesPerson OUTPUT,
-@message=@SalesYTDBySalesPerson2 OUTPUT;
-  print @SalesYTDBySalesPerson + @SalesYTDBySalesPerson2;
+
+
+DECLARE @r int;  
+DECLARE @mes nvarchar(200); 
+exec Registration N'Yum','181813Yu',N'yuki.sai@mail.ru', @rc=@r OUTPUT, @message=@mes OUTPUT;
+print @r + @mes;
+
+DECLARE @r int;  
+DECLARE @mes nvarchar(200); 
+DECLARE @count int=1;
+while(@count<120)
+begin
+declare @lo nvarchar(50)=N'User'+cast(@count as nvarchar(3));
+declare @pa nvarchar(30)=cast(@count*100 as nvarchar(5))+'U';
+declare @e nvarchar(50)=N'User'+cast(@count as nvarchar(3))+N'@mail.ru';
+exec Registration 
+	@login=@lo,
+	@password=@pa,
+	@email=@e,
+	@rc=@r OUTPUT, @message=@mes OUTPUT;
+	print @r + @mes;
+	set @count=@count+1;
+end;
+
 
 
 --DECLARE @p nvarchar(32)=N'181813Yu';
