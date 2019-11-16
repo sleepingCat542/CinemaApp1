@@ -30,8 +30,9 @@ create table STUDIO(
 ID uniqueidentifier primary key rowguidcol DEFAULT NEWSEQUENTIALID(),
 NAME nvarchar(20) not null,
 COUNTRY_ID nvarchar(10) foreign key references COUNTRY(ID),
-YEAR_OF_FOUNDATION int,     
-IMAGE varbinary(max));
+YEAR_OF_FOUNDATION int,  
+IMAGE varbinary(max));   
+alter table STUDIO ADD IMAGE varbinary(max) NULL
 
 --Genre
 create table GENRE(                 
@@ -42,10 +43,11 @@ NAME nvarchar(30) unique not null);
 create table ACTOR(
 ID uniqueidentifier primary key rowguidcol DEFAULT NEWSEQUENTIALID(),
 NAME nvarchar(20) not null,
-SURNAME nvarchar(20),
-COUNTRY_ID nvarchar(10) foreign key references Country(ID),
-AGE int,
-IMAGE varbinary(max));
+SURNAME nvarchar(30) not null,
+COUNTRY_ID nvarchar(10) foreign key references Country(ID)
+--AGE int,
+--IMAGE varbinary(max)
+);
 
 --Movie
 create table MOVIE(
@@ -56,8 +58,6 @@ COUNTRY_ID nvarchar(10) foreign key references COUNTRY(ID),
 --GENRE_ID int foreign key references GENRE(ID),
 RUNNING_TIME int,
 STUDIO_ID uniqueidentifier foreign key references STUDIO(ID),
-SCREENPLAY nvarchar(1000),
-COMPOSER nvarchar(50),
 --ACTOR_ID uniqueidentifier foreign key references ACTOR(ID),
 PLOT nvarchar(max),
 IMAGE varbinary(max),
@@ -129,6 +129,7 @@ ID int primary key IDENTITY(1, 1),
 USER_ID uniqueidentifier foreign key references USERS(ID) not null,
 DATE smalldatetime);
 ALTER TABLE PURCHASE ADD UNICK_TICKET nvarchar(20);
+ALTER TABLE PURCHASE ADD PRICE int null;
 
 --Tickets
 create table TICKETS(

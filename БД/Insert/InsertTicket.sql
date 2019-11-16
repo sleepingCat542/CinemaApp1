@@ -19,7 +19,7 @@ CREATE PROCEDURE InsertTicket
 		DECLARE @session_id int;
 		SET @session_id = (SELECT ID FROM SESSION WHERE (MOVIE_ID = @movie_id and HALL_ID = @hall_id and DATE = @date and TIME = @time));
 		DECLARE @purchase_id int;
-		SET @purchase_id = (SELECT ID FROM PURCHASE WHERE (UNIQUE_PASSWORD = @pass));
+		SET @purchase_id = (SELECT ID FROM PURCHASE WHERE (UNICK_TICKET = @pass));
 		DECLARE @count INT;
 		DECLARE @cost INT;
         SET @cost = (SELECT COST FROM SESSION WHERE (MOVIE_ID = @movie_id and HALL_ID = @hall_id and DATE = @date and TIME = @time));
@@ -115,18 +115,21 @@ CREATE PROCEDURE InsertTicket
 		END;
 END;
 	
-	go
-EXEC InsertTicket @movie = 'Веном', @cinema = 'Центральный', @hall = 'Главный', 
-@date = '4.12.2018', @time = '15:00', @pass = 'QOAMO',
-@row1 = 8, @seat1 = 8, @row2 = 8, @seat2 = 9, @rc = 0;
 
 DROP PROCEDURE InsertTicket;
 
+
+
+EXEC InsertTicket @movie = 'Малифесента', @cinema = 'Беларусь', @hall = 'Второй', 
+@date = '4.12.2018', @time = '15:00', @pass = 'QOAMO',
+@row1 = 8, @seat1 = 8, @row2 = 8, @seat2 = 9, @rc = 0;
+
+
+
 select * from SESSION;
 select * from TICKETS;
+SELECT * FROM PURCHASE;
 DELETE TICKETS;
 DELETE PURCHASE;
-select * from PURCHASE;
-SELECT FREESEATS FROM SESSION WHERE MOVIE_ID = '4A36EA1E-B9F5-E811-9A8A-14ABC56D8C6E' AND HALL_ID = 1 AND DATE = '2018-12-04' AND TIME = '15:00';
 
-SELECT * FROM PURCHASE;
+

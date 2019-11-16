@@ -1,0 +1,13 @@
+CREATE PROCEDURE SelectPrice
+@pass nvarchar(10),
+@price int = NULL output
+AS BEGIN
+    SET @price = (SELECT PRICE FROM PURCHASE WHERE UNIQUE_PASSWORD = @pass);
+	PRINT @price;
+END;
+DROP PROCEDURE SelectPrice;
+exec SelectPrice @pass = 'FCNBL';
+
+
+SELECT PRICE FROM PURCHASE WHERE UNIQUE_PASSWORD = 'FCNBL';
+SELECT * FROM PURCHASE;
