@@ -21,6 +21,7 @@ AS BEGIN
 	END
 END;
 
+
 EXEC GetMovieInfo;
 SELECT * FROM MOVIE;
 DROP PROCEDURE  GetMovieInfo;

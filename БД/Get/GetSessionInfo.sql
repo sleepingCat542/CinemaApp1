@@ -13,5 +13,7 @@ AS BEGIN
 	INNER JOIN HALL H ON H.ID = S.HALL_ID;
 	END
 END;
+
 DROP PROCEDURE GetSessionInfo;
-EXEC GetSessionInfo @date = '4.12.2018';
+
+--EXEC GetSessionInfo @date = '4.12.2018';

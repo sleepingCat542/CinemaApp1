@@ -1,6 +1,6 @@
 CREATE PROCEDURE DeleteCinema
     @name nvarchar(30),
-	@region nvarchar(30),
+	@city nvarchar(30),
 	@rc int output
 	AS BEGIN
 	    SET @rc = 0;

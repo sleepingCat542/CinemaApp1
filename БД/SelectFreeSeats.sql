@@ -12,5 +12,7 @@ AS BEGIN
     WHERE M.NAME = @movie AND H.NAME = @hall AND DATE = @date AND TIME = @time);
 	PRINT @freeseats;
 END;
+
 DROP PROCEDURE SelectFreeSeats;
-exec SelectFreeSeats @movie = 'Веном', @cinema = 'Центральный', @hall = 'Главный', @date = '2018-12-04', @time = '15:00';
+
+--exec SelectFreeSeats @movie = 'Веном', @cinema = 'Центральный', @hall = 'Главный', @date = '2018-12-04', @time = '15:00';
