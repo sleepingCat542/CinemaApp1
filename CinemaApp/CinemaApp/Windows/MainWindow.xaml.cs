@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CinemaApp.Pages;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,25 +21,26 @@ namespace CinemaApp
     /// </summary>
     public partial class MainWindow : Window
     {
-        public MainWindow()
+        bool isAdmin=false;
+
+        public Model.User user;
+        public MainWindow(Model.User user)
         {
+            this.user = user;
             InitializeComponent();
+            MainFrame.Navigate(new CinemaPage(user));
         }
 
-        private void ButtonOpenMenu_Click(object sender, RoutedEventArgs e)
+        public Model.Admin admin;
+        public MainWindow(Model.Admin admin)
         {
-
+            this.admin = admin;
+            InitializeComponent();
+            UsersTickets.Visable=Visable.Hidden;
+            isAdmin = true;
+            MainFrame.Navigate(new CinemaPage(admin));           
         }
-
-        private void ButtonCloseMenu_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void ListViewMenu_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
+       
 
         private void btnClose_Click(object sender, RoutedEventArgs e)
         {
@@ -58,14 +60,54 @@ namespace CinemaApp
             WindowState = WindowState.Minimized;
         }
 
-        private void Main_Click(object sender, RoutedEventArgs e)
+        private void Cinema_Click(object sender, RoutedEventArgs e)
         {
+            if(isAdmin)
+                MainFrame.Navigate(new CinemaPage(admin));
+            else
+                MainFrame.Navigate(new CinemaPage(user));
 
         }
 
-        private void Base_Click(object sender, RoutedEventArgs e)
+        private void Cinemas_Click(object sender, RoutedEventArgs e)
         {
+            if(isAdmin)
+                MainFrame.Navigate(new CinemaPage(admin));
+            else
+                MainFrame.Navigate(new CinemasPage(user));
 
+        }
+
+        private void Actors_Click(object sender, RoutedEventArgs e)
+        {
+            if(isAdmin)
+                MainFrame.Navigate(new ActorsPage(admin));
+            else
+                MainFrame.Navigate(new ActorsPage(user));
+
+        }
+
+        private void Studios_Click(object sender, RoutedEventArgs e)
+        {
+            if(isAdmin)
+                MainFrame.Navigate(new StudiosPage(admin));
+            else
+                MainFrame.Navigate(new StudiosPage(user));
+
+        }
+
+        private void Genres_Click(object sender, RoutedEventArgs e)
+        {
+            if(isAdmin)
+                MainFrame.Navigate(new GenresPage(admin));
+            else
+                MainFrame.Navigate(new GenresPage(user));
+
+        }
+
+        private void Tickets_Click(object sender, RoutedEventArgs e)
+        {
+                MainFrame.Navigate(new TicketPage(user));
         }
     }
 }

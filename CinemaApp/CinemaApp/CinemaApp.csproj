@@ -17,6 +17,21 @@
     <Deterministic>true</Deterministic>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -52,6 +67,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
@@ -73,26 +89,41 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="CinemaDB.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>CinemaDB.Context.tt</DependentUpon>
+    <Compile Include="Connection.cs" />
+    <Compile Include="Model\Admin.cs" />
+    <Compile Include="Model\Movie.cs" />
+    <Compile Include="Model\User.cs" />
+    <Compile Include="Pages\ActorsPages.xaml.cs">
+      <DependentUpon>ActorsPages.xaml</DependentUpon>
     </Compile>
-    <Compile Include="CinemaDB.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>CinemaDB.tt</DependentUpon>
+    <Compile Include="Pages\ByePage.xaml.cs">
+      <DependentUpon>ByePage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="CinemaDB.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>CinemaDB.edmx</DependentUpon>
+    <Compile Include="Pages\CinemaPage.xaml.cs">
+      <DependentUpon>CinemaPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="sp_helpdiagramdefinition_Result.cs">
-      <DependentUpon>CinemaDB.tt</DependentUpon>
+    <Compile Include="Pages\CinemasPage.xaml.cs">
+      <DependentUpon>CinemasPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="sp_helpdiagrams_Result.cs">
-      <DependentUpon>CinemaDB.tt</DependentUpon>
+    <Compile Include="Pages\FilmInfo.xaml.cs">
+      <DependentUpon>FilmInfo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\GenresPage.xaml.cs">
+      <DependentUpon>GenresPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\StudiosPage.xaml.cs">
+      <DependentUpon>StudiosPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\TicketPage.xaml.cs">
+      <DependentUpon>TicketPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\DateTimeToDateConverter.cs" />
+    <Compile Include="UserControls\filmButton.xaml.cs">
+      <DependentUpon>filmButton.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Validator.cs" />
+    <Compile Include="Windows\AddSeat.xaml.cs">
+      <DependentUpon>AddSeat.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\Log_in.xaml.cs">
       <DependentUpon>Log_in.xaml</DependentUpon>
@@ -100,6 +131,46 @@
     <Compile Include="Windows\Regestration.xaml.cs">
       <DependentUpon>Regestration.xaml</DependentUpon>
     </Compile>
+    <Page Include="Pages\ActorsPages.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\ByePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\CinemaPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\CinemasPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\FilmInfo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\GenresPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\StudiosPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\TicketPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\filmButton.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\AddSeat.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Windows\Log_in.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -143,13 +214,6 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EntityDeploy Include="CinemaDB.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>CinemaDB.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <None Include="CinemaDB.edmx.diagram">
-      <DependentUpon>CinemaDB.edmx</DependentUpon>
-    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -162,23 +226,24 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="CinemaDB.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>CinemaDB.Context.cs</LastGenOutput>
-      <DependentUpon>CinemaDB.edmx</DependentUpon>
-    </Content>
-    <Content Include="CinemaDB.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>CinemaDB.edmx</DependentUpon>
-      <LastGenOutput>CinemaDB.cs</LastGenOutput>
-    </Content>
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Resources\icon.png" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.6.1">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.6.1 %28x86 и x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

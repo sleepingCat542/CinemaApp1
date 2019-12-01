@@ -1,0 +1,21 @@
+CREATE PROCEDURE AllowRows
+@hall nvarchar(30),
+@session int
+AS BEGIN
+DECLARE @COUNTSEATS INT=1;
+	CREATE TABLE #ROWS
+	(
+		ROW_F int
+	);
+	WHILE(@COUNTSEATS<=(SELECT H.ROWS FROM SESSION S INNER JOIN HALL H ON H.ID=S.HALL_ID
+	WHERE S.ID=@session AND H.NAME=@hall))
+	BEGIN
+	 INSERT #ROWS(ROW_F) values(@COUNTSEATS);
+	 SET @COUNTSEATS = @COUNTSEATS + 1;
+	END;
+	SELECT ROW_F FROM #ROWS;	
+END;
+
+drop procedure AllowRows;
+
+EXEC AllowRows   @hall='Большой', @session=8;

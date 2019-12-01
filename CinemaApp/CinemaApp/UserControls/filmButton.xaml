@@ -1,0 +1,50 @@
+﻿<UserControl x:Class="CinemaApp.UserControls.filmButton"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:CinemaApp.UserControls"
+             mc:Ignorable="d" 
+             Height="100" Width="auto">
+    <Grid Background="{x:Null}">
+		
+		<Button x:Name="btnfilm" Height="Auto" Click="btnChoseFilm">
+			<Grid Height="80" Width="{Binding ActualWidth, ElementName=btnfilm}">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="2*"/>
+				<ColumnDefinition  Width="8*"/>
+			</Grid.ColumnDefinitions>
+				<Grid Grid.Column="0">
+					<Image x:Name="img"/>
+				</Grid>
+				<Grid Grid.Column="1">
+			<StackPanel >
+				<TextBlock Height="30" Name="name" Style="{DynamicResource FontS}" TextAlignment="Center"/>
+				<TextBlock Height="5" Background="{DynamicResource VeryLightText}"/>
+				<Grid Height="50">
+							<Grid.ColumnDefinitions>
+								<ColumnDefinition  Width="2*"/>
+								<ColumnDefinition Width="2*"/>
+								<ColumnDefinition Width="2*"/>
+								<ColumnDefinition Width="2*"/>
+							</Grid.ColumnDefinitions>
+							<Grid Grid.Column="0">
+						<TextBlock TextAlignment="Center" x:Name="date" FontSize="10" Style="{DynamicResource FontS}"/>
+					</Grid>
+					<Grid Grid.Column="1">
+						<TextBlock TextAlignment="Center" x:Name="country" FontSize="10" Style="{DynamicResource FontS}"/>
+					</Grid>
+					<Grid Grid.Column="2">
+						<TextBlock TextAlignment="Center" x:Name="genre" FontSize="10" Style="{DynamicResource FontS}"/>
+					</Grid>
+					<Grid Grid.Column="3">
+						<TextBlock  TextAlignment="Center" x:Name="studio" FontSize="10" Style="{DynamicResource FontS}"/>
+					</Grid>
+				</Grid>
+			</StackPanel>
+				</Grid>
+			</Grid>
+		</Button>
+            
+    </Grid>
+</UserControl>

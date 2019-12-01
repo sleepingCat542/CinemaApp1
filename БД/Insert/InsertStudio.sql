@@ -16,4 +16,4 @@ CREATE PROCEDURE InsertStudio2
 	END;
 
 DROP PROCEDURE InsertStudio2;
---exec InsertDirector @name = 'Netflix',  @country = 'США', @year = 1997, @image= 'H:\Курсач\Проект\Images\Studio\Netflix.png', @rc = 1;
+exec InsertStudio2 @name = 'Netflix',  @country = 'США', @year = 1997, @image= 'H:\Курсач\Проект\Images\Studio\Netflix.png', @rc = 1;

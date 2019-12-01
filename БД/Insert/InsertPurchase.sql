@@ -13,7 +13,12 @@ CREATE PROCEDURE InsertPurchase
 	END;
 	
 
-exec InsertPurchase @login = 'User1', @date = '3.12.2019';
+exec InsertPurchase @login = 'User1', @date = '12.11.2019';
+exec InsertPurchase @login = 'User1', @date = '15.11.2019';
+exec InsertPurchase @login = 'User2', @date = '13.11.2019';
+exec InsertPurchase @login = 'User2', @date = '12.11.2019';
+exec InsertPurchase @login = 'User3', @date = '10.11.2019';
+exec InsertPurchase @login = 'User3', @date = '09.11.2019';
 
 SELECT * FROM PURCHASE
 DELETE PURCHASE;

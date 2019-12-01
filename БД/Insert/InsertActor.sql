@@ -18,29 +18,19 @@ CREATE PROCEDURE InsertActor
 DROP PROCEDURE InsertActor;
 select * from actor;
 
-exec InsertActor @name = 'Том', @surname = 'Харди', @country = 'Великобритания',  @rc = 1;
-
---insert into MOVIE_ACTOR(ACTOR_ID)
---SELECT ACTOR_ID FROM ACTOR WHERE NAME = 'Том'; 
---insert into MOVIE_ACTOR(MOVIE_ID)
---SELECT MOVIE_ID FROM MOVIE WHERE NAME = 'Веном'; 
-
---SELECT a.NAME[Актер], b.NAME[Фильм] FROM ACTOR AS a INNER JOIN MOVIE_ACTOR AS ab ON a.ACTOR_ID=ab.ACTOR_ID INNER JOIN MOVIE AS b ON ab.MOVIE_ID=b.MOVIE_ID
---where a.NAME = 'Том';
-
---insert into MOVIE_ACTOR 
---SELECT a.NAME[Актер], ab.ACTOR_ID[ACTOR_ID] FROM ACTOR AS a INNER JOIN MOVIE_ACTOR AS ab ON a.ACTOR_ID=ab.ACTOR_ID
---where a.NAME = 'a';
-
-
---SELECT * FROM MOVIE_ACTOR;
---delete MOVIE_ACTOR;
-
---delete ACTOR;
---INSERT INTO ACTOR(PIC)
---   SELECT * FROM OPENROWSET(BULK N'C:\Cinema\Images\Actor\Tom_Hardy.jpg', SINGLE_BLOB) AS DATA WHERE NAME = 'Том';
---insert into ACTOR (PIC)
---select BulkColumn
---from Openrowset(Bulk 'C:\Cinema\Images\Actor\Tom_Hardy.jpg', Single_Blob) as img;
---insert into ACTOR (PIC) values ('C:\Cinema\Images\Actor\Tom_Hardy.jpg');
---select * from ACTOR;
+exec InsertActor @name = N'Петр', @surname = N'Федоров', @country = 'Россия',  @rc = 1;
+exec InsertActor @name = N'Алексей', @surname = N'Чадов', @country = 'Россия',  @rc = 1;
+exec InsertActor @name = N'Константин', @surname = N'Лавроненко', @country = 'Россия',  @rc = 1;
+exec InsertActor @name = N'Ксения', @surname = N'Кутепова', @country = 'Россия',  @rc = 1;
+exec InsertActor @name = N'Эмили', @surname = N'Бичем', @country = 'Великобритания',  @rc = 1;
+exec InsertActor @name = N'Бен', @surname = N'Уишоу', @country = 'Великобритания',  @rc = 1;
+exec InsertActor @name = N'Керри', @surname = N'Фокс', @country = 'Новая Зеландия',  @rc = 1;
+exec InsertActor @name = N'Феникс', @surname = N'Броссар', @country = 'Франция',  @rc = 1;
+exec InsertActor @name = N'Кристиан', @surname = N'Бэйл', @country = 'Великобритания',  @rc = 1; 
+exec InsertActor @name = N'Мэтт', @surname = N'Дэймон', @country = 'США',  @rc = 1;
+exec InsertActor @name = N'Катрина', @surname = N'Балф', @country = 'Великобритания',  @rc = 1;
+exec InsertActor @name = N'Джош', @surname = N'Лукас', @country = 'США',  @rc = 1;
+exec InsertActor @name = N'Хелен', @surname = N'Миррен', @country = 'Великобритания',  @rc = 1; 
+exec InsertActor @name = N'Джим', @surname = N'Картер', @country = 'Великобритания',  @rc = 1;
+exec InsertActor @name = N'Иэн', @surname = N'Маккеллен', @country = 'Великобритания',  @rc = 1;
+exec InsertActor @name = N'Рассел', @surname = N'Тови', @country = 'Великобритания',  @rc = 1;

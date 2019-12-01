@@ -16,46 +16,50 @@
         Title="MainWindow" Height="450" Width="800" WindowStyle="None" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Icon="/CinemaApp;component/Resources/icon.png">
 	<Grid>
 		<Grid.RowDefinitions>
-			<RowDefinition Height="1*"/>
-			<RowDefinition Height="2*"/>
+			<RowDefinition Height="3*"/>
 			<RowDefinition Height="20*"/>
 		</Grid.RowDefinitions>
 		<Grid Grid.Row="0" Background="{DynamicResource OrangeGradient}">
-			<Grid.ColumnDefinitions>
-				<ColumnDefinition Width="10*"/>
-				<ColumnDefinition Width="1*"/>
-			</Grid.ColumnDefinitions>
-			<Grid Grid.Column="1">
-				<DockPanel Height="20" Background="{x:Null}" >
-					<Grid>
-						<Grid.ColumnDefinitions>
-							<ColumnDefinition Width="1*"/>
-							<ColumnDefinition Width="1*"/>
-							<ColumnDefinition Width="1*"/>
-						</Grid.ColumnDefinitions>
-						<Grid Grid.Column="0">
-							<Button x:Name="btnThink" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}"   Height="20" Width="20" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" Click="btnThink_Click">
-								<materialDesign:PackIcon Kind="ArrowCollapseAll"/>
-							</Button>
+			<StackPanel>
+				<Grid>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="10*"/>
+					<ColumnDefinition Width="1*"/>
+				</Grid.ColumnDefinitions>
+				<Grid Grid.Column="1">
+					<DockPanel Height="20" Background="{x:Null}" >
+						<Grid>
+							<Grid.ColumnDefinitions>
+								<ColumnDefinition Width="1*"/>
+								<ColumnDefinition Width="1*"/>
+								<ColumnDefinition Width="1*"/>
+							</Grid.ColumnDefinitions>
+							<Grid Grid.Column="0">
+								<Button x:Name="btnThink" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}"   Height="20" Width="20" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" Click="btnThink_Click">
+									<materialDesign:PackIcon Kind="ArrowCollapseAll"/>
+								</Button>
+							</Grid>
+							<Grid Grid.Column="1">
+								<Button x:Name="btnWide" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Height="20" Width="20" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" Click="btnWide_Click">
+									<materialDesign:PackIcon Kind="Fullscreen"/>
+								</Button>
+							</Grid>
+							<Grid Grid.Column="2">
+								<Button  x:Name="btnClose" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Width="20" Height="20" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" Click="btnClose_Click">
+									<materialDesign:PackIcon Kind="CloseOutline"/>
+								</Button>
+							</Grid>
 						</Grid>
-						<Grid Grid.Column="1">
-							<Button x:Name="btnWide" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Height="20" Width="20" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" Click="btnWide_Click">
-								<materialDesign:PackIcon Kind="Fullscreen"/>
-							</Button>
-						</Grid>
-						<Grid Grid.Column="2">
-							<Button  x:Name="btnClose" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Width="20" Height="20" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" Click="btnClose_Click">
-								<materialDesign:PackIcon Kind="CloseOutline"/>
-							</Button>
-						</Grid>
-					</Grid>
-				</DockPanel>
-			</Grid>
+					</DockPanel>
+				</Grid>
+				</Grid>
+				<TextBlock x:Name="Title" Style="{DynamicResource FontBW}" TextAlignment="Center" Padding="0" Text="Ваш кинотеатр" FontSize="24"/>
+			</StackPanel>
+			
 		</Grid>
 		<Grid Grid.Row="1" Background="{DynamicResource OrangeGradient}">
-			<TextBlock x:Name="Title" Style="{DynamicResource FontBW}" TextAlignment="Center" Padding="0" Text="Ваш кинотеатр" FontSize="24"/>
 		</Grid>
-		<Grid Grid.Row="2">
+		<Grid Grid.Row="1">
 			<Grid.ColumnDefinitions>
 				<ColumnDefinition Width="4*"/>
 				<ColumnDefinition Width="16*"/>
@@ -79,17 +83,9 @@
 				</Grid.Background>
 				<StackPanel Grid.Column="0" Panel.ZIndex="2" Background="{x:Null}" x:Name="spLeft"   Grid.ColumnSpan="2" >
 					<!--<ToggleButton x:Name="menuButton" Background="Black"  Style="{StaticResource MaterialDesignSwitchAccentToggleButton}" ToolTip="MaterialDesignSwitchAccentToggleButton" Margin="1" HorizontalAlignment="Left" Height="12" VerticalAlignment="Top"/>-->
-					<DockPanel Style="{DynamicResource MenuItem}"  >
-						<Button Background="{x:Null}" Click="Main_Click"  Height="40">
-							<DockPanel HorizontalAlignment="Left" Width="300" Margin="-15 0 0 0">
-								<materialDesign:PackIcon Kind="LaptopMac" Style="{DynamicResource MenuImg}"/>
-								<Label Style="{DynamicResource MenuLabel}" Content="Поиск по жанру" />
-							</DockPanel>
-						</Button>
-					</DockPanel>
 
 					<DockPanel Style="{DynamicResource MenuItem}" >
-						<Button Click="Base_Click" Background="{x:Null}"  Height="40" >
+						<Button Click="Cinema_Click" Background="{x:Null}"  Height="40">
 							<DockPanel HorizontalAlignment="Left" Width="300" Margin="-17 0 0 0">
 								<materialDesign:PackIcon Kind="Notebook" Style="{DynamicResource MenuImg}"  />
 								<Label Style="{DynamicResource MenuLabel}" Content="Поиск по названию" />
@@ -98,43 +94,44 @@
 					</DockPanel>
 
 					<DockPanel Style="{DynamicResource MenuItem}">
-						<Button Background="{x:Null}"   Height="40">
+						<Button Background="{x:Null}" Click="Cinemas_Click"  Height="40">
 							<DockPanel HorizontalAlignment="Left" Width="300" Margin="-17 0 0 0">
 								<materialDesign:PackIcon Kind="GlassTulip" Style="{DynamicResource MenuImg}"/>
-								<Label Style="{DynamicResource MenuLabel}" Content="Поиск по году" Width="196"/>
+								<Label Style="{DynamicResource MenuLabel}" Content="Кинотеатры" Width="196"/>
 							</DockPanel>
 						</Button>
 					</DockPanel>
 
 					<DockPanel Style="{DynamicResource MenuItem}">
-						<Button Background="{x:Null}"   Height="40">
+						<Button Background="{x:Null}" Click="Actors_Click"  Height="40">
 							<DockPanel HorizontalAlignment="Left" Width="300" Margin="-17 0 0 0">
 								<materialDesign:PackIcon Kind="GlassTulip" Style="{DynamicResource MenuImg}"/>
-								<Label Style="{DynamicResource MenuLabel}" Content="Поиск по артистам" Width="196"/>
+								<Label Style="{DynamicResource MenuLabel}" Content="Актёры" Width="196"/>
+							</DockPanel>
+						</Button>
+					</DockPanel>
+					
+
+					<DockPanel Style="{DynamicResource MenuItem}">
+						<Button Background="{x:Null}" Click="Studios_Click"   Height="40">
+							<DockPanel HorizontalAlignment="Left" Width="300" Margin="-17 0 0 0">
+								<materialDesign:PackIcon Kind="GlassTulip" Style="{DynamicResource MenuImg}"/>
+								<Label Style="{DynamicResource MenuLabel}" Content="Студии" Width="196"/>
 							</DockPanel>
 						</Button>
 					</DockPanel>
 
 					<DockPanel Style="{DynamicResource MenuItem}">
-						<Button Background="{x:Null}"   Height="40">
+						<Button Background="{x:Null}" Click="Genres_Click"   Height="40">
 							<DockPanel HorizontalAlignment="Left" Width="300" Margin="-17 0 0 0">
 								<materialDesign:PackIcon Kind="GlassTulip" Style="{DynamicResource MenuImg}"/>
-								<Label Style="{DynamicResource MenuLabel}" Content="Расширенный поиск" Width="196"/>
+								<Label Style="{DynamicResource MenuLabel}" Content="Жанры" Width="196"/>
 							</DockPanel>
 						</Button>
 					</DockPanel>
 
-					<DockPanel Style="{DynamicResource MenuItem}">
-						<Button Background="{x:Null}"   Height="40">
-							<DockPanel HorizontalAlignment="Left" Width="300" Margin="-17 0 0 0">
-								<materialDesign:PackIcon Kind="GlassTulip" Style="{DynamicResource MenuImg}"/>
-								<Label Style="{DynamicResource MenuLabel}" Content="Трейлеры" Width="196"/>
-							</DockPanel>
-						</Button>
-					</DockPanel>
-
-					<DockPanel Style="{DynamicResource MenuItem}">
-						<Button Background="{x:Null}"   Height="40">
+					<DockPanel x:Name="UsersTickets" Style="{DynamicResource MenuItem}">
+						<Button Background="{x:Null}"  Click="Tickets_Click"  Height="40">
 							<DockPanel HorizontalAlignment="Left" Width="300" Margin="-17 0 0 0">
 								<materialDesign:PackIcon Kind="GlassTulip" Style="{DynamicResource MenuImg}"/>
 								<Label Style="{DynamicResource MenuLabel}" Content="Мои билеты" Width="196"/>
@@ -142,20 +139,6 @@
 						</Button>
 					</DockPanel>
 				</StackPanel>
-				<!--<Grid.RowDefinitions>
-					<RowDefinition Height="1*"/>
-					<RowDefinition Height="27*"/>
-				</Grid.RowDefinitions>-->
-				<!--<Grid Grid.Row="0">
-					<ToggleButton x:Name="menuButton"   Style="{StaticResource MaterialDesignSwitchAccentToggleButton}" ToolTip="MaterialDesignSwitchAccentToggleButton" Margin="1" HorizontalAlignment="Left" Height="12" VerticalAlignment="Top"/>
-				</Grid>
-				<Grid Grid.Row="1">
-					<StackPanel>
-						<DockPanel>
-
-						</DockPanel>
-					</StackPanel>
-				</Grid>-->
 			</Grid>
 			<Grid Grid.Column="1" Panel.ZIndex="0">
 				<Grid.Background>
@@ -166,8 +149,8 @@
 						<GradientStop Color="#FFFFCCBC" Offset="0.616"/>
 					</LinearGradientBrush>
 				</Grid.Background>
+				<Frame x:Name="MainFrame" Grid.Row="1" NavigationUIVisibility="Hidden"/>
 			</Grid>
 		</Grid>
 	</Grid>
-
 </Window>

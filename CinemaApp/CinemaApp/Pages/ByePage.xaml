@@ -1,0 +1,42 @@
+﻿<Page x:Class="CinemaApp.Pages.ByePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:CinemaApp.Pages"
+	  xmlns:local1="clr-namespace:CinemaApp.Resources"
+	  mc:Ignorable="d" 
+      Height="auto" Width="auto"
+      Title="ByePage">
+	<Page.Resources>
+		<local1:DateTimeToDateConverter x:Key="myDateConverter" />
+		<Style x:Key="ColumnHeaderStyle1" TargetType="DataGridColumnHeader">
+			<Setter Property="FontSize" Value="12" />
+			<Setter Property="FontFamily" Value="Segoe Print Bold" />
+			<Setter Property="HorizontalAlignment" Value="Stretch" />
+			<Setter Property="HorizontalContentAlignment" Value="Center" />
+			<Setter Property="Background" Value="{Binding ElementName=mainGrid}" />
+		</Style>
+	</Page.Resources>
+
+	<Grid x:Name="mainGrid"  Background="{x:Null}">
+		<DataGrid x:Name="grid" AutoGenerateColumns="False" FontSize="12" ColumnHeaderStyle="{DynamicResource ColumnHeaderStyle1}" VerticalScrollBarVisibility="Hidden"
+				  Foreground="{DynamicResource Main}" FontFamily="Segoe Print Bold" HorizontalContentAlignment="Center" HorizontalAlignment="Stretch">
+			<DataGrid.Columns>
+				<DataGridTextColumn x:Name="fieldFilm"   Binding="{Binding Name}" IsReadOnly="True"  Header="Фильм" Width="10*"/>
+				<DataGridTextColumn Binding="{Binding Cinema}" IsReadOnly="True"   Header="Кинотеатр" Width="10*"/>
+				<DataGridTextColumn  Binding="{Binding Hall}" IsReadOnly="True" Header="Зал" Width="10*"/>
+				<DataGridTextColumn Binding="{Binding Date, Converter={StaticResource myDateConverter}}" IsReadOnly="True"  Header="Дата" Width="10*"/>
+				<DataGridTextColumn Binding="{Binding Time}" IsReadOnly="True"  Header="Время" Width="10*"/>
+				<DataGridTextColumn Binding="{Binding Seats}" IsReadOnly="True"  Header="Места" Width="10*"/>
+				<DataGridTextColumn Binding="{Binding Cost}" IsReadOnly="True"  Header="Стоимость" Width="10*"/>
+				<DataGridTextColumn Binding="{Binding S_ID}" IsReadOnly="True"  Header="S_ID" Visibility="Hidden" Width="10*"/>
+			</DataGrid.Columns>
+			<DataGrid.ItemContainerStyle>
+				<Style TargetType="DataGridRow">
+					<EventSetter Event="MouseDoubleClick" Handler="Row_DoubleClick"/>
+				</Style>
+			</DataGrid.ItemContainerStyle>
+		</DataGrid>
+    </Grid>
+</Page>

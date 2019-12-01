@@ -1,0 +1,78 @@
+﻿<Page x:Class="CinemaApp.Pages.FilmInfo"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:CinemaApp.Pages"
+      mc:Ignorable="d" 
+      Height="auto" Width="auto"
+      Title="FilmInfo">
+	<Grid Background="{x:Null}" x:Name="mainGrid">
+		<Grid.RowDefinitions>
+			<RowDefinition Height="3*"/>
+			<RowDefinition Height="15*"/>
+			<RowDefinition Height="13*"/>
+			<RowDefinition Height="4*"/>
+		</Grid.RowDefinitions>
+		<Grid Grid.Row="0">
+			<TextBlock x:Name="name" Style="{DynamicResource FontBW}" FontSize="18" Foreground="{DynamicResource Main}" TextAlignment="Center" Text="lol"/>
+		</Grid>
+		<Grid Grid.Row="1">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="5*"/>
+				<ColumnDefinition Width="3*"/>
+			</Grid.ColumnDefinitions>
+			<Grid Grid.Column="0">
+				<TextBlock x:Name="plot"  Style="{DynamicResource FontBW}" Foreground="{DynamicResource Main}"  FontSize="10" TextWrapping="Wrap">
+					В недалеком будущем что-то произошло. Связь с большей частью населенных пунктов Земли оборвалась. Космонавты передали с орбиты, что видят сверху небольшое пятно в Восточной Европе, по своим очертаниям напоминающее круг. 
+То, что военные находят за границей этого круга, шокирует. В магазинах, в автомобилях, на дорогах, в зданиях больниц и вокзалов, повсюду — следы столкновений. Кто или что уничтожает все живое?
+ И как долго продержится последний аванпост человечества?
+				</TextBlock>
+			</Grid>
+			<Grid Grid.Column="1">
+			<Image x:Name="img"/>
+			</Grid>
+		</Grid>
+		<Grid Grid.Row="2">
+		<StackPanel>
+			<DockPanel>
+				<TextBlock Style="{DynamicResource FontTBl}" FontSize="10" Foreground="{DynamicResource Main}" Text="Страна создания: "/>
+					<TextBlock x:Name="country" Style="{DynamicResource FontTBl}" Foreground="{DynamicResource Main}" FontSize="10"/>
+			</DockPanel>
+			<DockPanel>
+					<TextBlock  Style="{DynamicResource FontTBl}"  FontSize="10" Foreground="{DynamicResource Main}" Text="Актёры: "/>
+					<TextBlock x:Name="actors" Style="{DynamicResource FontTBl}" Foreground="{DynamicResource Main}" FontSize="10"/>
+			</DockPanel>
+			<DockPanel>
+					<TextBlock   Style="{DynamicResource FontBW}" FontSize="10" Foreground="{DynamicResource Main}" Text="Жанр: "/>
+					<TextBlock x:Name="genres" Style="{DynamicResource FontTBl}" Foreground="{DynamicResource Main}" FontSize="10"/>
+			</DockPanel>
+			<DockPanel>
+					<TextBlock Text="Дата выхода: " Style="{DynamicResource FontBW}" Foreground="{DynamicResource Main}" FontSize="10" />
+					<TextBlock x:Name="date" Style="{DynamicResource FontTBl}" Foreground="{DynamicResource Main}" FontSize="10"/>
+			</DockPanel>
+			<DockPanel>
+					<TextBlock Text="Длительность: " Style="{DynamicResource FontBW}" Foreground="{DynamicResource Main}" FontSize="10" />
+					<TextBlock x:Name="runtime" Style="{DynamicResource FontTBl}" Foreground="{DynamicResource Main}" FontSize="10"/>
+			</DockPanel>
+			<DockPanel>
+					<TextBlock Text="Кинокомпания: " Style="{DynamicResource FontBW}" Foreground="{DynamicResource Main}" FontSize="10" />
+					<TextBlock x:Name="studio" Style="{DynamicResource FontTBl}" Foreground="{DynamicResource Main}" FontSize="10"/>
+			</DockPanel>
+		</StackPanel>
+			</Grid>
+		<Grid Grid.Row="3">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="1*"/>
+				<ColumnDefinition Width="1*"/>
+			</Grid.ColumnDefinitions>
+			<Grid Grid.Column="0">
+				<Button x:Name="btnBye" Margin="4"  DockPanel.Dock="Left"  FontFamily="Segoe Print Bold" Click="BtnBye_Click">Купить</Button>
+			</Grid>
+			<Grid Grid.Column="1">
+				<Button x:Name="btnTrailer" Margin="4"  DockPanel.Dock="Right"  FontFamily="Segoe Print Bold">Трейлер</Button>
+			</Grid>
+
+		</Grid>
+	</Grid>
+</Page>

@@ -32,7 +32,7 @@ NAME nvarchar(20) not null,
 COUNTRY_ID nvarchar(10) foreign key references COUNTRY(ID),
 YEAR_OF_FOUNDATION int,  
 IMAGE varbinary(max));   
-alter table STUDIO ADD IMAGE varbinary(max) NULL
+
 
 --Genre
 create table GENRE(                 

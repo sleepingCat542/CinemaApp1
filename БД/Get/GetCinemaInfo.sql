@@ -1,0 +1,15 @@
+CREATE PROCEDURE GetCinemaInfo
+AS BEGIN
+	    SELECT
+		CITY,
+		NAME,
+		ADDRESS,
+		WEBSITE,
+		NUMBER_OF_HALLS[Number],
+		TIMETABLE		
+	        FROM CINEMA; 
+END;
+
+DROP PROCEDURE GetCinemaInfo;
+
+--exec GetActorInfo;

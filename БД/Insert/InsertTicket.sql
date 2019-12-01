@@ -6,7 +6,7 @@ CREATE PROCEDURE InsertTicket
 	@time time,
 	@pass nvarchar(10),
 	@row1 int = null, @seat1 int = null, @row2 int = null, @seat2 int = null, @row3 int = null, @seat3 int = null, @row4 int = null, @seat4 int = null, @row5 int = null, @seat5 int = null,
-	@row6 int = null, @seat6 int = null, @row7 int = null, @seat7 int = null, @row8 int = null, @seat8 int = null, @row9 int = null, @seat9 int = null, @row10 int = null, @seat10 int = null, 
+	@mess nvarchar(50) output,
 	@rc int output
 	AS BEGIN
 	    SET @rc = 0;
@@ -25,94 +25,69 @@ CREATE PROCEDURE InsertTicket
         SET @cost = (SELECT COST FROM SESSION WHERE (MOVIE_ID = @movie_id and HALL_ID = @hall_id and DATE = @date and TIME = @time));
 		IF (@seat1 IS NOT NULL AND @row1 IS NOT NULL)
 		BEGIN
+		exec CheckSeats @row5, @seat5, @hall, @message=@mess output;;		
+		if @mess!=null
+		begin
 		   INSERT INTO TICKETS(SESSION_ID, PURCHASE_ID, ROW, SEAT)
 		       VALUES (@session_id, @purchase_id, @row1, @seat1);
 		   UPDATE SESSION SET FREESEATS = FREESEATS - 1 WHERE (MOVIE_ID = @movie_id and HALL_ID = @hall_id and DATE = @date and TIME = @time);
                SET @count =  (SELECT COUNT(*) SEAT FROM TICKETS WHERE PURCHASE_ID = @purchase_id);
-		   UPDATE PURCHASE SET PRICE = @count * @cost; 
+		   UPDATE PURCHASE SET PRICE = @count * @cost where ID = @purchase_id; 
 			   SET @rc = 1;
+			   end;
 		END;
 		IF (@seat2 IS NOT NULL AND @row2 IS NOT NULL)
 		BEGIN 
+		exec CheckSeats @row5, @seat5, @hall, @message=@mess output;;		
+		if @mess!=null
+		begin
 		   INSERT INTO TICKETS(SESSION_ID, PURCHASE_ID, ROW, SEAT)
 		       VALUES (@session_id, @purchase_id, @row2, @seat2);
 		   UPDATE SESSION SET FREESEATS = FREESEATS - 1 WHERE (MOVIE_ID = @movie_id and HALL_ID = @hall_id and DATE = @date and TIME = @time);
 			   SET @count =  (SELECT COUNT(*) SEAT FROM TICKETS WHERE PURCHASE_ID = @purchase_id);
-		   UPDATE PURCHASE SET PRICE = @count * @cost; 
+		   UPDATE PURCHASE SET PRICE = @count * @cost where ID = @purchase_id; 
 			   SET @rc = 1;
+			   end;
 		END;
 		IF (@seat3 IS NOT NULL AND @row3 IS NOT NULL)
 		BEGIN
+		exec CheckSeats @row5, @seat5, @hall, @message=@mess output;;		
+		if @mess!=null
+		begin
 		   INSERT INTO TICKETS(SESSION_ID, PURCHASE_ID, ROW, SEAT)
 		       VALUES (@session_id, @purchase_id, @row3, @seat3);
 		   UPDATE SESSION SET FREESEATS = FREESEATS - 1 WHERE (MOVIE_ID = @movie_id and HALL_ID = @hall_id and DATE = @date and TIME = @time);
 			   SET @count =  (SELECT COUNT(*) SEAT FROM TICKETS WHERE PURCHASE_ID = @purchase_id);
-		   UPDATE PURCHASE SET PRICE = @count * @cost; 
+		   UPDATE PURCHASE SET PRICE = @count * @cost where ID = @purchase_id;
 			   SET @rc = 1;
+			   end;
 		END;
 	    IF (@seat4 IS NOT NULL AND @row4 IS NOT NULL)
 		BEGIN
+		exec CheckSeats @row5, @seat5, @hall, @message=@mess output;;		
+		if @mess!=null
+		begin
 		   INSERT INTO TICKETS(SESSION_ID, PURCHASE_ID, ROW, SEAT)
 		       VALUES (@session_id, @purchase_id, @row4, @seat4);
 		   UPDATE SESSION SET FREESEATS = FREESEATS - 1 WHERE (MOVIE_ID = @movie_id and HALL_ID = @hall_id and DATE = @date and TIME = @time);
 		       SET @count =  (SELECT COUNT(*) SEAT FROM TICKETS WHERE PURCHASE_ID = @purchase_id);
-		   UPDATE PURCHASE SET PRICE = @count * @cost; 
+		   UPDATE PURCHASE SET PRICE = @count * @cost where ID = @purchase_id; 
 			   SET @rc = 1;
+			   end;
 		END;
 		IF (@seat5 IS NOT NULL AND @row5 IS NOT NULL)
 		BEGIN
+		exec CheckSeats @row5, @seat5, @hall, @message=@mess output;;		
+		if @mess!=null
+		begin
 		   INSERT INTO TICKETS(SESSION_ID, PURCHASE_ID, ROW, SEAT)
 		       VALUES (@session_id, @purchase_id, @row5, @seat5);
 		   UPDATE SESSION SET FREESEATS = FREESEATS - 1 WHERE (MOVIE_ID = @movie_id and HALL_ID = @hall_id and DATE = @date and TIME = @time);
 		       SET @count =  (SELECT COUNT(*) SEAT FROM TICKETS WHERE PURCHASE_ID = @purchase_id);
-		   UPDATE PURCHASE SET PRICE = @count * @cost; 
+		   UPDATE PURCHASE SET PRICE = @count * @cost where ID = @purchase_id;
 			   SET @rc = 1;
-		END;
-		IF (@seat6 IS NOT NULL AND @row6 IS NOT NULL)
-		BEGIN
-		   INSERT INTO TICKETS(SESSION_ID, PURCHASE_ID, ROW, SEAT)
-		       VALUES (@session_id, @purchase_id, @row6, @seat6);
-		   UPDATE SESSION SET FREESEATS = FREESEATS - 1 WHERE (MOVIE_ID = @movie_id and HALL_ID = @hall_id and DATE = @date and TIME = @time);
-		       SET @count =  (SELECT COUNT(*) SEAT FROM TICKETS WHERE PURCHASE_ID = @purchase_id);
-		   UPDATE PURCHASE SET PRICE = @count * @cost; 
-			   SET @rc = 1;
-		END;
-		IF (@seat7 IS NOT NULL AND @row7 IS NOT NULL)
-		BEGIN
-		   INSERT INTO TICKETS(SESSION_ID, PURCHASE_ID, ROW, SEAT)
-		       VALUES (@session_id, @purchase_id, @row7, @seat7);
-		   UPDATE SESSION SET FREESEATS = FREESEATS - 1 WHERE (MOVIE_ID = @movie_id and HALL_ID = @hall_id and DATE = @date and TIME = @time);
-		       SET @count =  (SELECT COUNT(*) SEAT FROM TICKETS WHERE PURCHASE_ID = @purchase_id);
-		   UPDATE PURCHASE SET PRICE = @count * @cost; 
-			   SET @rc = 1;
-		END;
-		IF (@seat8 IS NOT NULL AND @row8 IS NOT NULL)
-		BEGIN
-		   INSERT INTO TICKETS(SESSION_ID, PURCHASE_ID, ROW, SEAT)
-		       VALUES (@session_id, @purchase_id, @row8, @seat8);
-		   UPDATE SESSION SET FREESEATS = FREESEATS - 1 WHERE (MOVIE_ID = @movie_id and HALL_ID = @hall_id and DATE = @date and TIME = @time);
-		       SET @count =  (SELECT COUNT(*) SEAT FROM TICKETS WHERE PURCHASE_ID = @purchase_id);
-		   UPDATE PURCHASE SET PRICE = @count * @cost; 
-			   SET @rc = 1;
-		END;
-		IF (@seat9 IS NOT NULL AND @row9 IS NOT NULL)
-		BEGIN
-		   INSERT INTO TICKETS(SESSION_ID, PURCHASE_ID, ROW, SEAT)
-		       VALUES (@session_id, @purchase_id, @row9, @seat9);
-		   UPDATE SESSION SET FREESEATS = FREESEATS - 1 WHERE (MOVIE_ID = @movie_id and HALL_ID = @hall_id and DATE = @date and TIME = @time);
-		       SET @count =  (SELECT COUNT(*) SEAT FROM TICKETS WHERE PURCHASE_ID = @purchase_id);
-		   UPDATE PURCHASE SET PRICE = @count * @cost; 
-			   SET @rc = 1;
-		END;
-	    IF (@seat10 IS NOT NULL AND @row10 IS NOT NULL)
-		BEGIN
-		   INSERT INTO TICKETS(SESSION_ID, PURCHASE_ID, ROW, SEAT)
-		       VALUES (@session_id, @purchase_id, @row10, @seat10);
-		   UPDATE SESSION SET FREESEATS = FREESEATS - 1 WHERE (MOVIE_ID = @movie_id and HALL_ID = @hall_id and DATE = @date and TIME = @time);
-		       SET @count =  (SELECT COUNT(*) SEAT FROM TICKETS WHERE PURCHASE_ID = @purchase_id);
-		   UPDATE PURCHASE SET PRICE = @count * @cost; 
-			   SET @rc = 1;
-		END;
+			   END;
+		END;	
 END;
 	
 
@@ -120,9 +95,27 @@ DROP PROCEDURE InsertTicket;
 
 
 
-EXEC InsertTicket @movie = 'Малифесента', @cinema = 'Беларусь', @hall = 'Второй', 
-@date = '4.12.2018', @time = '15:00', @pass = 'QOAMO',
+EXEC InsertTicket @movie = 'Аванпост', @cinema = 'Аврора', @hall = 'Большой', 
+@date = '29.11.2019', @time = '13:30', @pass = 'AVTb',
 @row1 = 8, @seat1 = 8, @row2 = 8, @seat2 = 9, @rc = 0;
+--EXEC InsertTicket @movie = 'Аванпост', @cinema = 'Аврора', @hall = 'Большой', 
+--@date = '29.11.2019', @time = '13:30', @pass = 'AVTb',
+--@row1 = 8, @seat1 = 8, @row2 = 8, @seat2 = 9, @rc = 0;
+--EXEC InsertTicket @movie = 'Аванпост', @cinema = 'Аврора', @hall = 'Большой', 
+--@date = '29.11.2019', @time = '13:30', @pass = 'AVTb',
+--@row1 = 8, @seat1 = 8, @row2 = 8, @seat2 = 9, @rc = 0;
+--EXEC InsertTicket @movie = 'Аванпост', @cinema = 'Аврора', @hall = 'Большой', 
+--@date = '29.11.2019', @time = '13:30', @pass = 'AVTb',
+--@row1 = 8, @seat1 = 8, @row2 = 8, @seat2 = 9, @rc = 0;
+--EXEC InsertTicket @movie = 'Аванпост', @cinema = 'Аврора', @hall = 'Большой', 
+--@date = '29.11.2019', @time = '13:30', @pass = 'AVTb',
+--@row1 = 8, @seat1 = 8, @row2 = 8, @seat2 = 9, @rc = 0;
+--EXEC InsertTicket @movie = 'Аванпост', @cinema = 'Аврора', @hall = 'Большой', 
+--@date = '29.11.2019', @time = '13:30', @pass = 'AVTb',
+--@row1 = 8, @seat1 = 8, @row2 = 8, @seat2 = 9, @rc = 0;
+--EXEC InsertTicket @movie = 'Аванпост', @cinema = 'Аврора', @hall = 'Большой', 
+--@date = '29.11.2019', @time = '13:30', @pass = 'AVTb',
+--@row1 = 8, @seat1 = 8, @row2 = 8, @seat2 = 9, @rc = 0;
 
 
 
