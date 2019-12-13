@@ -1,7 +1,7 @@
 CREATE PROCEDURE InsertHall
     @name nvarchar(30),
 	@cinema nvarchar(30),
-	@city nvarchar(30),
+	@city nvarchar(30)=null,
 	@rows int,
 	@seats int,
 	@message nvarchar(200) output
@@ -9,7 +9,10 @@ CREATE PROCEDURE InsertHall
 		declare @rc int= 0;
 		DECLARE  @cinema_id int;
 		set @message='';
+		if( @city is not null)
 		SET @cinema_id = (SELECT ID FROM CINEMA WHERE NAME = @cinema and CITY=@city);
+		else
+		SET @cinema_id = (SELECT ID FROM CINEMA WHERE NAME = @cinema);
 		if(@name=any(select NAME from HALL where CINEMA_ID=@cinema_id))
 			set @message='Такой зал в этом кинотеатре уже существует!';
 		else if(((select COUNT(*) from HALL where CINEMA_ID=@cinema_id)+1)>(SELECT NUMBER_OF_HALLS FROM CINEMA WHERE ID=@cinema_id))

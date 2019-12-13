@@ -1,0 +1,26 @@
+﻿<Page x:Class="CinemaApp.Pages.InsertHallPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:CinemaApp.Pages"
+      mc:Ignorable="d" 
+      Height="auto" Width="auto"
+      Title="InsertHallPage">
+
+    <ScrollViewer VerticalScrollBarVisibility="Hidden">
+		<Canvas Background="{x:Null}" Width="800" Height="450">
+			<Label Content="Введите информацию о зале" Style="{DynamicResource StandartLabel}" FontSize="18"  Height="40" Width="360" Canvas.Top="30" Canvas.Left="120" HorizontalAlignment="Center" HorizontalContentAlignment="Center" Background="{x:Null}"  BorderThickness="0"/>
+			<Label Content="Название" Style="{DynamicResource StandartLabel}"  Height="40" Width="200" Canvas.Top="90" Canvas.Left="200" HorizontalContentAlignment="Center" Background="{x:Null}" HorizontalAlignment="Center" BorderThickness="0"/>
+			<TextBox Name="Name" Style="{DynamicResource FontMB}"  TextWrapping="Wrap" Height="40" Width="400" Canvas.Top="120" Canvas.Left="100" />
+			<Label Content="Название кинотеатра"  Style="{DynamicResource StandartLabel}" Height="40" Width="200" Canvas.Top="160" Canvas.Left="200" HorizontalContentAlignment="Center" Background="{x:Null}" HorizontalAlignment="Center" BorderThickness="0"/>
+			<ComboBox Name="CinemaName" FontFamily="Segoe Print Bold" Foreground="{DynamicResource LightMain}" FontSize="10" Height="40" Width="400" Canvas.Top="190" Canvas.Left="100"  />
+			<Label Content="Количество рядов" Style="{DynamicResource StandartLabel}"  Height="40" Width="200" Canvas.Top="300" Canvas.Left="200" HorizontalContentAlignment="Center" Background="{x:Null}" HorizontalAlignment="Center" BorderThickness="0"/>
+			<TextBox Name="Rows" Style="{DynamicResource FontMB}" TextWrapping="Wrap" Height="40" Width="400" Canvas.Top="330" Canvas.Left="100"  />
+			<Label Content="Количество мест в ряду" Style="{DynamicResource StandartLabel}"  Height="40" Width="225" Canvas.Top="230" Canvas.Left="200" HorizontalAlignment="Center" HorizontalContentAlignment="Center" Background="{x:Null}"  BorderThickness="0"/>
+			<TextBox Name="Seats" Style="{DynamicResource FontMB}" TextWrapping="Wrap" Height="40" Width="400" Canvas.Top="260" Canvas.Left="100" />
+			
+			<Button Content ="ОК" FontFamily="Segoe Print Bold" Height="40" Width="140" Canvas.Top="400" Canvas.Left="220" HorizontalAlignment="Center"  Click="AddHall"/>
+		</Canvas>
+	</ScrollViewer>
+</Page>

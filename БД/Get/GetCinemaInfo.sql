@@ -1,15 +1,15 @@
 CREATE PROCEDURE GetCinemaInfo
 AS BEGIN
 	    SELECT
-		CITY,
-		NAME,
-		ADDRESS,
-		WEBSITE,
+		CITY[City],
+		NAME[Name],
+		ADDRESS[Address],
+		WEBSITE[Website],
 		NUMBER_OF_HALLS[Number],
-		TIMETABLE		
+		TIMETABLE[Timetable]		
 	        FROM CINEMA; 
 END;
 
 DROP PROCEDURE GetCinemaInfo;
 
---exec GetActorInfo;
+exec GetCinemaInfo;

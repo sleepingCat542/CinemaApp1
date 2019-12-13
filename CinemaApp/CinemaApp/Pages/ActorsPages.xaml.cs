@@ -29,11 +29,9 @@ namespace CinemaApp.Pages
         bool isAdmin = false;
         public Model.Admin admin;
         public Model.User user;
-        Movie movie;
 
-        public ActorsPages(Admin admin, Movie movie)
+        public ActorsPages(Admin admin)
         {
-            this.movie = movie;
             this.admin = admin;
             isAdmin = true;
             cn = Connection.GetConnectionAdmin(admin.password);
@@ -41,12 +39,12 @@ namespace CinemaApp.Pages
             FillSessions();
         }
 
-        public ActorsPages(User user, Movie movie)
+        public ActorsPages(User user)
         {
-            this.movie = movie;
             this.user = user;
             cn = Connection.GetConnectionUser();
             InitializeComponent();
+            btnAdmin.Visibility = Visibility.Hidden;
             FillSessions();
         }
 
@@ -57,6 +55,11 @@ namespace CinemaApp.Pages
 
             grid.ItemsSource = actors.DefaultView;
             cn.Close();
-        }       
+        }
+
+        private void btnAdmin_Click(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.Navigate(new InsertActorPage(admin));
+        }
     }
 }

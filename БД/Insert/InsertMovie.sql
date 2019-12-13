@@ -6,6 +6,8 @@ CREATE PROCEDURE InsertMovie
 	@runningtime int,
 	@studioname nvarchar(20),
 	@plot nvarchar(max),
+	@image varbinary(max)=null,
+	@video varbinary(max)=null,
 	@rc int output
 	AS BEGIN
 	    SET @rc = 0;
@@ -21,8 +23,8 @@ CREATE PROCEDURE InsertMovie
 		DECLARE @movie_id uniqueidentifier;
 		BEGIN
 			BEGIN TRAN		
-				INSERT INTO MOVIE(NAME, RELEASE, COUNTRY_ID, RUNNING_TIME, STUDIO_ID, PLOT)
-					VALUES (@name, @release, @country_id, @runningtime, @studio_id, @plot);			
+				INSERT INTO MOVIE(NAME, RELEASE, COUNTRY_ID, RUNNING_TIME, STUDIO_ID, PLOT, IMAGE, TRAILER)
+					VALUES (@name, @release, @country_id, @runningtime, @studio_id, @plot, @image, @video);			
 				SET @movie_id=(select id from movie where name=@name);
 				INSERT INTO GENRE_MOVIE(GENRE_ID, MOVIE_ID)
 					VALUES (@genre_id, @movie_id);			

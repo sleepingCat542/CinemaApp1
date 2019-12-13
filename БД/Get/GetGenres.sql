@@ -1,0 +1,8 @@
+CREATE PROCEDURE GetGenres
+AS BEGIN
+	    SELECT 	NAME FROM GENRE; 
+END;
+
+DROP PROCEDURE GetGenres;
+
+--exec GetActorInfo;

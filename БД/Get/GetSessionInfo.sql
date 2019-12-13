@@ -1,6 +1,7 @@
 CREATE PROCEDURE GetSessionInfo
 @date date = NULL,
-@name nvarchar(max) = NULL
+@name nvarchar(max) = NULL,
+@cinema nvarchar(30)=NULL
 AS BEGIN
   
   IF (@date IS NOT NULL)
@@ -13,6 +14,12 @@ AS BEGIN
 	FROM SESSION S INNER JOIN MOVIE M ON M.ID = S.MOVIE_ID
 	INNER JOIN HALL H ON H.ID = S.HALL_ID INNER JOIN CINEMA C ON C.ID = H.CINEMA_ID WHERE M.NAME = @name;
 	END
+	ELSE IF (@cinema IS not NULL)
+	BEGIN
+    SELECT S.ID[S_ID], M.NAME[Name], H.NAME[Hall], S.DATE[Date], S.TIME[Time], S.FREESEATS[Seats], S.COST[Cost], C.NAME[Cinema]
+	FROM SESSION S INNER JOIN MOVIE M ON M.ID = S.MOVIE_ID
+	INNER JOIN HALL H ON H.ID = S.HALL_ID INNER JOIN CINEMA C ON C.ID = H.CINEMA_ID WHERE C.NAME = @cinema;
+	END
 	ELSE IF (@date IS NULL and @name IS NULL)
 	BEGIN
     SELECT  S.ID[S_ID], M.NAME[Name], H.NAME[Hall], S.DATE[Date], S.TIME[Time], S.FREESEATS[Seats], S.COST[Cost], C.NAME[Cinema]
@@ -24,4 +31,4 @@ END;
 
 DROP PROCEDURE GetSessionInfo;
 
---EXEC GetSessionInfo @date = '4.12.2018';
+EXEC GetSessionInfo @cinema= 'Аврора';

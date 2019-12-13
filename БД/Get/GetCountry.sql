@@ -1,0 +1,8 @@
+CREATE PROCEDURE GetCountry
+AS BEGIN
+	    SELECT
+	        NAME[Name]			
+			FROM COUNTRY; 
+END;
+
+DROP PROCEDURE GetCountry;

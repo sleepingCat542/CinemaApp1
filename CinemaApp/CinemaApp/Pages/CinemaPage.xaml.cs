@@ -79,7 +79,7 @@ namespace CinemaApp.Pages
 
                   Movie movie = new Movie(data[0].ToString(), data[1].ToString(),
                         date.ToString("yy/MM/dd"), Convert.ToInt32(data[3].ToString()), data[4].ToString(), newBitmapImage, data[6] as byte[],
-                        data[7].ToString(), genres.Value.ToString(), data[9].ToString(), actors.Value.ToString());
+                        data[7].ToString(), genres.Value.ToString(), data[10].ToString(), actors.Value.ToString());
                     if (isAdmin)
                     {
                         filmButtons.Add(new filmButton(movie, admin));
@@ -136,7 +136,7 @@ namespace CinemaApp.Pages
 
                         Movie movie = new Movie(data[0].ToString(), data[1].ToString(),
                             date.ToString("yy/MM/dd"), Convert.ToInt32(data[3].ToString()), data[4].ToString(), newBitmapImage, data[6] as byte[],
-                            data[7].ToString(), genres.Value.ToString(), data[9].ToString(), actors.Value.ToString());
+                            data[7].ToString(), genres.Value.ToString(), data[8].ToString(), actors.Value.ToString());
                         if (isAdmin)
                         {
                             filmButtons.Add(new filmButton(movie, admin));

@@ -45,8 +45,6 @@ ID uniqueidentifier primary key rowguidcol DEFAULT NEWSEQUENTIALID(),
 NAME nvarchar(20) not null,
 SURNAME nvarchar(30) not null,
 COUNTRY_ID nvarchar(10) foreign key references Country(ID)
---AGE int,
---IMAGE varbinary(max)
 );
 
 --Movie
@@ -55,14 +53,11 @@ ID uniqueidentifier rowguidcol DEFAULT NEWSEQUENTIALID(),
 NAME nvarchar(max) not null,
 RELEASE date,
 COUNTRY_ID nvarchar(10) foreign key references COUNTRY(ID),
---GENRE_ID int foreign key references GENRE(ID),
 RUNNING_TIME int,
 STUDIO_ID uniqueidentifier foreign key references STUDIO(ID),
---ACTOR_ID uniqueidentifier foreign key references ACTOR(ID),
 PLOT nvarchar(max),
 IMAGE varbinary(max),
 CONSTRAINT PK_Movie PRIMARY KEY CLUSTERED(ID));
-
 alter table MOVIE ADD TRAILER varbinary(max) NULL
 
 --GENRE AND MOVIE (many-to-many)
@@ -123,6 +118,10 @@ LOGIN nvarchar(50) not null,
 PASSWORD nvarchar(30) not null,
 EMAIL nvarchar(50) not null);
 
+alter table USERS
+add constraint PK_USERS primary key nonclustered (ID asc);
+
+
 --Purchase
 create table PURCHASE(
 ID int primary key IDENTITY(1, 1),
@@ -130,6 +129,8 @@ USER_ID uniqueidentifier foreign key references USERS(ID) not null,
 DATE smalldatetime);
 ALTER TABLE PURCHASE ADD UNICK_TICKET nvarchar(20);
 ALTER TABLE PURCHASE ADD PRICE int null;
+ALTER TABLE PURCHASE
+  ADD FOREIGN KEY (USER_ID) REFERENCES USERS (ID);
 
 --Tickets
 create table TICKETS(

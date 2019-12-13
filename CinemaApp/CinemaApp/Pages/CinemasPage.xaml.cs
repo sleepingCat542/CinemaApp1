@@ -29,18 +29,20 @@ namespace CinemaApp.Pages
         public Model.User user;
         Movie movie;
 
-        public CinemasPage(User user, Movie movie)
+        public CinemasPage(User user)
         {
-            this.movie = movie;
             this.user = user;
             cn = Connection.GetConnectionUser();
             InitializeComponent();
+            btnAdmin.Visibility = Visibility.Hidden;
+            btnAdminHall.Visibility = Visibility.Hidden;
+            btnAdminEdit.Visibility = Visibility.Hidden;
+            btnAdminEdit.Visibility = Visibility.Hidden;
             FillCinemas();
         }
 
-        public CinemasPage(Admin admin, Movie movie)
+        public CinemasPage(Admin admin)
         {
-            this.movie = movie;
             this.admin = admin;
             isAdmin = true;
             cn = Connection.GetConnectionAdmin(admin.password);
@@ -55,6 +57,58 @@ namespace CinemaApp.Pages
 
             grid.ItemsSource = cinemas.DefaultView;
             cn.Close();
+        }
+
+        private void Row_DoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            DataGridRow row = (DataGridRow)sender;
+            DataRowView rw = (DataRowView)row.Item;
+            if(!isAdmin)
+            this.NavigationService.Navigate(new ByePage(user, movie, "Cinema", rw.Row.ItemArray[1].ToString()));
+            else
+                this.NavigationService.Navigate(new ByePage(admin, movie, "Cinema", rw.Row.ItemArray[1].ToString()));
+        }
+
+        private void btnAdmin_Click(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.Navigate(new InsertCinema(admin));
+        }
+
+        private void btnAdminHall_Click(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.Navigate(new InsertHallPage(admin));
+        }
+
+        private void DataGridRow_PreviewMouseButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            if (isAdmin)
+            {
+                DataGridRow row = (DataGridRow)sender;
+                DataRowView rw = (DataRowView)row.Item;
+                MessageBoxResult resul = MessageBox.Show("Вы уверены, что хотите удалить кинотеатр?", "Удаление", MessageBoxButton.OKCancel);
+                if (resul != MessageBoxResult.Cancel)
+                {
+                    cn.Open();
+                    int result = Connection.DeleteCinema(rw.Row.ItemArray[1].ToString(), rw.Row.ItemArray[0].ToString(), cn);
+                    if (result == 1)
+                    {
+                        MessageBox.Show("Удаление прошло успешно!");
+                        FillCinemas();
+                    }
+                    else
+                        MessageBox.Show("Ошибка удаления!");
+                    cn.Close();
+                }
+
+               
+            }
+        }
+
+        private void btnAdminEdit_Click(object sender, RoutedEventArgs e)
+        {
+
+                this.NavigationService.Navigate(new CinemaEditPage(admin));
+           
         }
     }
 }

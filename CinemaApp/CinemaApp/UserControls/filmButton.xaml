@@ -8,7 +8,7 @@
              Height="100" Width="auto">
     <Grid Background="{x:Null}">
 		
-		<Button x:Name="btnfilm" Height="Auto" Click="btnChoseFilm">
+		<Button x:Name="btnfilm" Height="Auto" Click="btnChoseFilm" MouseRightButtonUp="Btnfilm_MouseRightButtonUp">
 			<Grid Height="80" Width="{Binding ActualWidth, ElementName=btnfilm}">
 			<Grid.ColumnDefinitions>
 				<ColumnDefinition Width="2*"/>

@@ -1,0 +1,22 @@
+﻿<Page x:Class="CinemaApp.Pages.AdminPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:CinemaApp.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="AdminPage">
+
+    <Grid Background="{x:Null}">
+		<StackPanel>
+			<Button Content="Сменить пользователя" FontFamily="Segoe Print Bold" Margin="10" Click="ChangeUser"/>
+			<Button Content="Добавить фильм" FontFamily="Segoe Print Bold" Margin="10" Click="AddFilm"/>
+			<Button Content="Изменить фильм" FontFamily="Segoe Print Bold" Margin="10" Click="EditFilm"/>
+			<Button Content="Добавить к фильму жанр" FontFamily="Segoe Print Bold" Margin="10" Click="AddGenre"/>
+			<Button Content="Добавить к фильму актёров" FontFamily="Segoe Print Bold" Margin="10" Click="AddActor"/>
+			<Button Content="Добавить сеанс" FontFamily="Segoe Print Bold" Margin="10" Click="AddSession"/>
+		</StackPanel>
+        
+    </Grid>
+</Page>

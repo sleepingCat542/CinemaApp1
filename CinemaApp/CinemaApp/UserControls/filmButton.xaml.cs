@@ -2,6 +2,7 @@
 using CinemaApp.Pages;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,13 +24,16 @@ namespace CinemaApp.UserControls
     public partial class filmButton : UserControl
     {
         bool isAdmin = false;
+        SqlConnection cn;
         public Model.Movie movie;
+        
 
         public Model.Admin admin;
         public filmButton(Movie movie, Admin admin)
         {
             this.admin = admin;
             isAdmin = true;
+            cn = Connection.GetConnectionAdmin(admin.password);
             InitializeComponent();
             FillPage(movie);         
         }
@@ -38,8 +42,10 @@ namespace CinemaApp.UserControls
         public filmButton(Movie movie, User user)
         {
             this.user = user;
-            FillPage(movie);
+            cn = Connection.GetConnectionUser();
             InitializeComponent();
+            FillPage(movie);
+            
         }
 
         public void FillPage(Movie movie)
@@ -55,31 +61,50 @@ namespace CinemaApp.UserControls
 
         private void btnChoseFilm(object sender, RoutedEventArgs e)
         {
-            //Button s = (Button)sender;
-            //Grid g = (Grid)s.Parent;
-
-            MainWindow main;
-            if (isAdmin)
-            {
-                StackPanel sp = (StackPanel) this.Parent;
-                ScrollViewer sw = (ScrollViewer)sp.Parent;
-                Grid gr = (Grid)sw.Parent;
-                Grid g = (Grid)gr.Parent;
+            Page p=new Page();
+            StackPanel sp = (StackPanel)this.Parent;
+            ScrollViewer sw = (ScrollViewer)sp.Parent;
+            Grid gr = (Grid)sw.Parent;
+            Grid g = (Grid)gr.Parent;
+            if(sp.Name== "listOfFilmsByGenres")
+                p = (Page)g.Parent;
+            else if(sp.Name == "listOfFilms")
+                {
                 Grid ggr = (Grid)g.Parent;
-                Page p = (Page)ggr.Parent;
+                p = (Page)ggr.Parent;
+            }
+            
+            if (isAdmin)
+            {                
                 p.NavigationService.Navigate(new FilmInfo(movie, admin));
-
-                //Application.Current.MainWindow.
-                //main = new MainWindow(admin);
-                //Application.Current.MainWindow.MainFrame.Navigate(new FilmInfo(movie, admin));
-                //main.MainFrame.Navigate(new FilmInfo(movie, admin));
             }
             else
             {
-                main = new MainWindow(user);
-                main.MainFrame.Navigate(new FilmInfo(movie, user));
+                p.NavigationService.Navigate(new FilmInfo(movie, user));
             }
             
+        }
+
+        private void Btnfilm_MouseRightButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            if (isAdmin)
+            {
+                MessageBoxResult resul = MessageBox.Show("Вы уверены, что хотите удалить фильм?", "Удаление", MessageBoxButton.OKCancel);
+                if (resul != MessageBoxResult.Cancel)
+                {
+                    cn.Open();
+                    int result = Connection.DeleteMovie(name.Text, cn);
+                    if (result == 1)
+                    {
+                        MessageBox.Show("Удаление прошло успешно!");
+                    }
+                    else
+                        MessageBox.Show("Ошибка удаления!");
+                    cn.Close();
+                }
+
+
+            }
         }
     }
 }

@@ -45,7 +45,6 @@ namespace CinemaApp.Windows
                         SqlConnection cn = Connection.GetConnectionAdmin(Password.Password);
                         SqlConnectionStringBuilder sqlbuilder = new SqlConnectionStringBuilder(cn.ConnectionString);
 
-                        MessageBox.Show("Вы вошли в систему!");
                         Model.Admin admin = new Model.Admin(sqlbuilder.UserID, sqlbuilder.Password);
                         MainWindow mainWnd = new MainWindow(admin);
                         mainWnd.Show();
@@ -82,15 +81,23 @@ namespace CinemaApp.Windows
 
                             if ((bool)cmd.Parameters["@rc"].Value)
                             {
-                                MessageBox.Show("Вы вошли в систему!");
 
-                                cmd = new SqlCommand("GetUserInfo", cn);
+                                cmd = new SqlCommand("UserInfo", cn);
                                 cmd.CommandType = CommandType.StoredProcedure;
-                                cmd.Parameters.Add(login);
-                                cmd.Parameters.Add(password);
+
+                                SqlParameter login2 = new SqlParameter();
+                                login2.ParameterName = "@login";
+                                login2.Value = Login.Text;
+
+                                SqlParameter password2 = new SqlParameter();
+                                password2.ParameterName = "@password";
+                                password2.Value = Password.Password;
+
+                                cmd.Parameters.Add(login2);
+                                cmd.Parameters.Add(password2);
 
                                 SqlParameter id = new SqlParameter();
-                                id.ParameterName = "id";
+                                id.ParameterName = "@id";
                                 id.SqlDbType = SqlDbType.UniqueIdentifier;
                                 id.Direction = ParameterDirection.Output;
                                 cmd.Parameters.Add(id);

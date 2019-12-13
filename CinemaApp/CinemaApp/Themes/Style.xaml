@@ -83,6 +83,18 @@
 		<Setter Property="Foreground" Value="{DynamicResource VeryLightText}"></Setter>
 	</Style>
 
+	<Style x:Key="InsertCombo" TargetType="ComboBox">
+		<Setter Property="FontFamily" Value="Segoe Print Bold"></Setter>
+		<Setter Property="FontSize" Value="10"></Setter>
+		<Setter Property="Foreground" Value="{DynamicResource LightMain}"></Setter>
+	</Style>
+
+	<Style x:Key="CheckEdition" TargetType="CheckBox">
+		<Setter Property="FontFamily" Value="Segoe Print Bold"></Setter>
+		<Setter Property="FontSize" Value="10"></Setter>
+		<Setter Property="Foreground" Value="{DynamicResource LightMain}"></Setter>
+		<Setter Property="Background" Value="{x:Null}"></Setter>
+	</Style>
 	<!--<Style x:Key="ProfButton" TargetType="Button">
 		<Setter Property="Foreground" Value="#543318" />
 		<Setter Property="FontSize" Value="12" />
@@ -141,6 +153,16 @@
 				</EventTrigger.Actions>
 			</EventTrigger>
 		</Style.Triggers>-->
+	</Style>
+
+	<Style x:Key="StandartLabel" TargetType="Label">
+		<Setter Property="Foreground" Value="{DynamicResource LightMain}" />
+		<Setter Property="Width" Value="200" />
+		<Setter Property="Height" Value="30" />
+		<Setter Property="HorizontalAlignment" Value="Left" />
+		<Setter Property="VerticalAlignment" Value="Center" />
+		<Setter Property="FontFamily" Value="Segoe Print Bold" />
+		<Setter Property="FontSize" Value="16" />
 	</Style>
 
 	<Style x:Key="MenuImg" TargetType="materialDesign:PackIcon">

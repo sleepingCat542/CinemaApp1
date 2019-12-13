@@ -72,7 +72,7 @@ namespace CinemaApp
                         message.ParameterName = "@message";
                         message.SqlDbType = SqlDbType.NVarChar;
                         message.Size = 200;
-                        rc.Direction = ParameterDirection.Output;
+                        message.Direction = ParameterDirection.Output;
                         cmd.Parameters.Add(message);
 
                         cmd.ExecuteNonQuery();

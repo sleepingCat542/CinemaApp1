@@ -28,6 +28,7 @@ namespace CinemaApp
         {
             this.user = user;
             InitializeComponent();
+            AdminAction.Visibility = Visibility.Hidden;
             MainFrame.Navigate(new CinemaPage(user));
         }
 
@@ -36,7 +37,7 @@ namespace CinemaApp
         {
             this.admin = admin;
             InitializeComponent();
-            UsersTickets.Visable=Visable.Hidden;
+            UsersTickets.Visibility = Visibility.Hidden;
             isAdmin = true;
             MainFrame.Navigate(new CinemaPage(admin));           
         }
@@ -72,7 +73,7 @@ namespace CinemaApp
         private void Cinemas_Click(object sender, RoutedEventArgs e)
         {
             if(isAdmin)
-                MainFrame.Navigate(new CinemaPage(admin));
+                MainFrame.Navigate(new CinemasPage(admin));
             else
                 MainFrame.Navigate(new CinemasPage(user));
 
@@ -81,9 +82,9 @@ namespace CinemaApp
         private void Actors_Click(object sender, RoutedEventArgs e)
         {
             if(isAdmin)
-                MainFrame.Navigate(new ActorsPage(admin));
+                MainFrame.Navigate(new ActorsPages(admin));
             else
-                MainFrame.Navigate(new ActorsPage(user));
+                MainFrame.Navigate(new ActorsPages(user));
 
         }
 
@@ -108,6 +109,12 @@ namespace CinemaApp
         private void Tickets_Click(object sender, RoutedEventArgs e)
         {
                 MainFrame.Navigate(new TicketPage(user));
+        }
+
+        private void Admin_Click(object sender, RoutedEventArgs e)
+        {
+
+            MainFrame.Navigate(new AdminPage(admin));
         }
     }
 }

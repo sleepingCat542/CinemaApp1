@@ -14,18 +14,27 @@
 			<Setter Property="FontFamily" Value="Segoe Print Bold" />
 			<Setter Property="HorizontalAlignment" Value="Stretch" />
 			<Setter Property="HorizontalContentAlignment" Value="Center" />
-			<Setter Property="Background" Value="{Binding ElementName=mainGrid}" />
+			<Setter Property="Background" Value="{Binding ElementName=grid}" />
 		</Style>
 	</Page.Resources>
 
 	<Grid x:Name="mainGrid"  Background="{x:Null}">
+		<Grid.RowDefinitions>
+			<RowDefinition Height="15*"/>
+			<RowDefinition Height="95*"/>
+		</Grid.RowDefinitions>
+		<Grid Grid.Row="0">
+			<Button x:Name="btnAdmin"  Content="Добавить актёра" Margin="5" Click="btnAdmin_Click"/>
+		</Grid>
+		<Grid Grid.Row="1">
 		<DataGrid x:Name="grid" AutoGenerateColumns="False" FontSize="12" ColumnHeaderStyle="{DynamicResource ColumnHeaderStyle1}" VerticalScrollBarVisibility="Hidden"
-				  Foreground="{DynamicResource Main}" FontFamily="Segoe Print Bold" HorizontalContentAlignment="Center" HorizontalAlignment="Stretch">
+				  Foreground="{DynamicResource Main}" FontFamily="Segoe Print Bold" Margin="10" HorizontalContentAlignment="Center" Background="{DynamicResource VeryLightText}" HorizontalAlignment="Stretch">
 			<DataGrid.Columns>
 				<DataGridTextColumn  Binding="{Binding Name}" IsReadOnly="True"  Header="Имя" Width="10*"/>
 				<DataGridTextColumn Binding="{Binding Surname}" IsReadOnly="True"   Header="Фамилия" Width="10*"/>
 				<DataGridTextColumn  Binding="{Binding Country}" IsReadOnly="True" Header="Страна" Width="10*"/>
 			</DataGrid.Columns>
 		</DataGrid>
+		</Grid>
 	</Grid>
 </Page>

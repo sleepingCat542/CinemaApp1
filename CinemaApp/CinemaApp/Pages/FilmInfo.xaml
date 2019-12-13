@@ -7,11 +7,13 @@
       mc:Ignorable="d" 
       Height="auto" Width="auto"
       Title="FilmInfo">
+	<ScrollViewer VerticalScrollBarVisibility="Hidden">
 	<Grid Background="{x:Null}" x:Name="mainGrid">
 		<Grid.RowDefinitions>
 			<RowDefinition Height="3*"/>
 			<RowDefinition Height="15*"/>
-			<RowDefinition Height="13*"/>
+			<RowDefinition Height="2*"/>
+			<RowDefinition Height="15*"/>
 			<RowDefinition Height="4*"/>
 		</Grid.RowDefinitions>
 		<Grid Grid.Row="0">
@@ -23,45 +25,52 @@
 				<ColumnDefinition Width="3*"/>
 			</Grid.ColumnDefinitions>
 			<Grid Grid.Column="0">
-				<TextBlock x:Name="plot"  Style="{DynamicResource FontBW}" Foreground="{DynamicResource Main}"  FontSize="10" TextWrapping="Wrap">
+				<ScrollViewer  VerticalScrollBarVisibility="Hidden">
+				<TextBlock x:Name="plot"  Style="{DynamicResource FontBW}" Foreground="{DynamicResource Main}"  FontSize="14" TextWrapping="Wrap">
 					В недалеком будущем что-то произошло. Связь с большей частью населенных пунктов Земли оборвалась. Космонавты передали с орбиты, что видят сверху небольшое пятно в Восточной Европе, по своим очертаниям напоминающее круг. 
 То, что военные находят за границей этого круга, шокирует. В магазинах, в автомобилях, на дорогах, в зданиях больниц и вокзалов, повсюду — следы столкновений. Кто или что уничтожает все живое?
  И как долго продержится последний аванпост человечества?
 				</TextBlock>
+				</ScrollViewer>
 			</Grid>
 			<Grid Grid.Column="1">
 			<Image x:Name="img"/>
 			</Grid>
 		</Grid>
-		<Grid Grid.Row="2">
+		<Grid Grid.Row="2"></Grid>
+		<Grid Grid.Row="3">
+			<ScrollViewer  VerticalScrollBarVisibility="Hidden">
 		<StackPanel>
+				
 			<DockPanel>
-				<TextBlock Style="{DynamicResource FontTBl}" FontSize="10" Foreground="{DynamicResource Main}" Text="Страна создания: "/>
+				<TextBlock Style="{DynamicResource FontTBl}" FontSize="12" Foreground="{DynamicResource Main}" Text="Страна создания: "/>
 					<TextBlock x:Name="country" Style="{DynamicResource FontTBl}" Foreground="{DynamicResource Main}" FontSize="10"/>
 			</DockPanel>
 			<DockPanel>
-					<TextBlock  Style="{DynamicResource FontTBl}"  FontSize="10" Foreground="{DynamicResource Main}" Text="Актёры: "/>
+					<TextBlock  Style="{DynamicResource FontTBl}"  FontSize="12" Foreground="{DynamicResource Main}" Text="Актёры: "/>
 					<TextBlock x:Name="actors" Style="{DynamicResource FontTBl}" Foreground="{DynamicResource Main}" FontSize="10"/>
 			</DockPanel>
 			<DockPanel>
-					<TextBlock   Style="{DynamicResource FontBW}" FontSize="10" Foreground="{DynamicResource Main}" Text="Жанр: "/>
+					<TextBlock   Style="{DynamicResource FontBW}" FontSize="12" Foreground="{DynamicResource Main}" Text="Жанр: "/>
 					<TextBlock x:Name="genres" Style="{DynamicResource FontTBl}" Foreground="{DynamicResource Main}" FontSize="10"/>
 			</DockPanel>
 			<DockPanel>
-					<TextBlock Text="Дата выхода: " Style="{DynamicResource FontBW}" Foreground="{DynamicResource Main}" FontSize="10" />
+					<TextBlock Text="Дата выхода: " Style="{DynamicResource FontBW}" Foreground="{DynamicResource Main}" FontSize="12" />
 					<TextBlock x:Name="date" Style="{DynamicResource FontTBl}" Foreground="{DynamicResource Main}" FontSize="10"/>
 			</DockPanel>
 			<DockPanel>
-					<TextBlock Text="Длительность: " Style="{DynamicResource FontBW}" Foreground="{DynamicResource Main}" FontSize="10" />
+					<TextBlock Text="Длительность: " Style="{DynamicResource FontBW}" Foreground="{DynamicResource Main}" FontSize="12" />
 					<TextBlock x:Name="runtime" Style="{DynamicResource FontTBl}" Foreground="{DynamicResource Main}" FontSize="10"/>
 			</DockPanel>
 			<DockPanel>
-					<TextBlock Text="Кинокомпания: " Style="{DynamicResource FontBW}" Foreground="{DynamicResource Main}" FontSize="10" />
+					<TextBlock Text="Кинокомпания: " Style="{DynamicResource FontBW}" FontSize="12" Foreground="{DynamicResource Main}"/>
 					<TextBlock x:Name="studio" Style="{DynamicResource FontTBl}" Foreground="{DynamicResource Main}" FontSize="10"/>
 			</DockPanel>
-		</StackPanel>
-			</Grid>
-		<Grid Grid.Row="3">
+				
+			</StackPanel>
+			</ScrollViewer>
+		</Grid>
+		<Grid Grid.Row="4">
 			<Grid.ColumnDefinitions>
 				<ColumnDefinition Width="1*"/>
 				<ColumnDefinition Width="1*"/>
@@ -70,9 +79,10 @@
 				<Button x:Name="btnBye" Margin="4"  DockPanel.Dock="Left"  FontFamily="Segoe Print Bold" Click="BtnBye_Click">Купить</Button>
 			</Grid>
 			<Grid Grid.Column="1">
-				<Button x:Name="btnTrailer" Margin="4"  DockPanel.Dock="Right"  FontFamily="Segoe Print Bold">Трейлер</Button>
+				<Button x:Name="btnTrailer" Margin="4"  DockPanel.Dock="Right"  FontFamily="Segoe Print Bold" Click="btnTrailer_Click">Трейлер</Button>
 			</Grid>
-
 		</Grid>
+
 	</Grid>
+	</ScrollViewer>
 </Page>

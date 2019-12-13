@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 H:\Курсач\Проект\CinemaApp\CinemaApp\App.xaml
-1452018519
+25-931374664
 
-27-1500370491
+38-972365908
 211606326445
-Pages\ActorsPages.xaml;Pages\ByePage.xaml;Pages\CinemaPage.xaml;Pages\CinemasPage.xaml;Pages\FilmInfo.xaml;Pages\GenresPage.xaml;Pages\StudiosPage.xaml;Pages\TicketPage.xaml;UserControls\filmButton.xaml;Windows\AddSeat.xaml;Windows\Log_in.xaml;Windows\MainWindow.xaml;Windows\Regestration.xaml;Themes\Style.xaml;
+Pages\ActorsPages.xaml;Pages\AdminPage.xaml;Pages\ByePage.xaml;Pages\CinemaEditPage.xaml;Pages\CinemaPage.xaml;Pages\CinemasPage.xaml;Pages\FilmInfo.xaml;Pages\GenresPage.xaml;Pages\InsertActorPage.xaml;Pages\InsertCinema.xaml;Pages\InsertHallPage.xaml;Pages\InsertMovie.xaml;Pages\InsertSessionPage.xaml;Pages\InsertStudioPage.xaml;Pages\MovieEditPage.xaml;Pages\PageAddActor.xaml;Pages\PageAddGenre.xaml;Pages\StudiosPage.xaml;Pages\TicketPage.xaml;UserControls\AddSeat.xaml;UserControls\filmButton.xaml;Windows\Log_in.xaml;Windows\MainWindow.xaml;Windows\Regestration.xaml;Themes\Style.xaml;
 
-False
+True
 

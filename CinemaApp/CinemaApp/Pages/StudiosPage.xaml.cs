@@ -1,5 +1,8 @@
-﻿using System;
+﻿using CinemaApp.Model;
+using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -26,9 +29,8 @@ namespace CinemaApp.Pages
         public Model.Admin admin;
         public Model.User user;
 
-        public StudiosPage(Admin admin, Movie movie)
+        public StudiosPage(Admin admin)
         {
-            this.movie = movie;
             this.admin = admin;
             isAdmin = true;
             cn = Connection.GetConnectionAdmin(admin.password);
@@ -36,12 +38,12 @@ namespace CinemaApp.Pages
             FillStudios();
         }
 
-        public StudiosPage(User user, Movie movie)
+        public StudiosPage(User user)
         {
-            this.movie = movie;
             this.user = user;
             cn = Connection.GetConnectionUser();
             InitializeComponent();
+            btnAdmin.Visibility = Visibility.Hidden;
             FillStudios();
         }
 
@@ -52,6 +54,11 @@ namespace CinemaApp.Pages
 
             grid.ItemsSource = studios.DefaultView;
             cn.Close();
-        } 
+        }
+
+        private void btnAdmin_Click(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.Navigate(new InsertStudioPage(admin));
+        }
     }
 }

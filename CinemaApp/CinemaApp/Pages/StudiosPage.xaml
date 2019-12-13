@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:CinemaApp.Pages"
       mc:Ignorable="d" 
-      d:DesignHeight="auto" d:DesignWidth="auto"
+      d:DesignHeight="450" d:DesignWidth="800"
       Title="StudiosPage">
 	<Page.Resources>
 		<Style x:Key="ColumnHeaderStyle1" TargetType="DataGridColumnHeader">
@@ -18,12 +18,20 @@
 		</Page.Resources>
 
 	<Grid x:Name="mainGrid"  Background="{x:Null}">
+		<Grid.RowDefinitions>
+			<RowDefinition Height="15*"/>
+			<RowDefinition Height="95*"/>
+		</Grid.RowDefinitions>
+		<Grid Grid.Row="0">
+			<Button x:Name="btnAdmin"  Content="Добавить студию" Margin="5" Click="btnAdmin_Click"/>
+		</Grid>
+		<Grid Grid.Row="1">
 		<DataGrid x:Name="grid" AutoGenerateColumns="False" FontSize="12" ColumnHeaderStyle="{DynamicResource ColumnHeaderStyle1}" VerticalScrollBarVisibility="Hidden"
-				  Foreground="{DynamicResource Main}" FontFamily="Segoe Print Bold" HorizontalContentAlignment="Center" HorizontalAlignment="Stretch">
+				  Foreground="{DynamicResource Main}" FontFamily="Segoe Print Bold" Margin="10"  Background="{DynamicResource VeryLightText}" HorizontalContentAlignment="Center" HorizontalAlignment="Stretch">
 			<DataGrid.Columns>
-				<DataGridTextColumn Binding="{Binding Name}" IsReadOnly="True"   Header="Кинотеатр" Width="10*"/>
+				<DataGridTextColumn Binding="{Binding Name}" IsReadOnly="True"    Header="Кинотеатр" Width="10*"/>
 				<DataGridTextColumn  Binding="{Binding Year}" IsReadOnly="True" Header="Зал" Width="10*"/>
-				<DataGridTextColumn Binding="{Binding Country}" IsReadOnly="True"  Header="S_ID" Visibility="Hidden" Width="10*"/>
+				<DataGridTextColumn Binding="{Binding Country}" IsReadOnly="True"  Header="Страна"  Width="10*"/>
 				<DataGridTemplateColumn Header="Логотип" Width="30*">
 							<DataGridTemplateColumn.CellTemplate>
 								<DataTemplate>
@@ -33,7 +41,7 @@
 						</DataGridTemplateColumn>
 			</DataGrid.Columns>
 		</DataGrid>
-		
-		
+
+		</Grid>
 	</Grid>
 </Page>

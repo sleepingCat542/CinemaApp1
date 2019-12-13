@@ -5,6 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:CinemaApp.Pages"
 	  xmlns:local1="clr-namespace:CinemaApp.Resources"
+	  xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
 	  mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="TicketPage">
@@ -20,26 +21,67 @@
 	</Page.Resources>
 
 	<Grid x:Name="mainGrid"  Background="{x:Null}">
+		<Grid.RowDefinitions>
+			<RowDefinition Height="5*"/>
+			<RowDefinition Height="90*"/>
+			<RowDefinition  Height="13*"/>
+		</Grid.RowDefinitions>
+		<Grid Grid.Row="0" x:Name="tooltipGrid">
+			<DockPanel HorizontalAlignment="Right" Height="{Binding ActualHeight, ElementName=tooltipGrid}">
+				<Button   Width="{Binding ActualHeight, ElementName=tooltipGrid}" Padding="0" Height="{Binding ActualHeight, ElementName=tooltipGrid}" Margin="5 0 5 0">
+					<materialDesign:PackIcon Kind="QuestionMarkRhombusOutline" Foreground="{DynamicResource VeryLightText}"  HorizontalAlignment="Center" Width="{Binding ActualHeight, ElementName=tooltipGrid}" VerticalAlignment="Center" Height="{Binding ActualHeight, ElementName=tooltipGrid}"/>
+					<Button.ToolTip>
+						<ToolTip  FontFamily="Segoe Print Bold">
+							Кликните два раза на выбранный вами билет, чтобы его распечатать.						
+						</ToolTip>
+					</Button.ToolTip>
+				</Button>
+				<Button   Width="{Binding ActualHeight, ElementName=tooltipGrid}" Padding="0" Height="{Binding ActualHeight, ElementName=tooltipGrid}" Margin="5 0 5 0">
+					<materialDesign:PackIcon Kind="QuestionMarkRhombusOutline" Foreground="{DynamicResource VeryLightText}"  HorizontalAlignment="Center" Width="{Binding ActualHeight, ElementName=tooltipGrid}" VerticalAlignment="Center" Height="{Binding ActualHeight, ElementName=tooltipGrid}"/>
+					<Button.ToolTip>
+						<ToolTip  FontFamily="Segoe Print Bold">
+							Кликните правой кнопкой мыши на билет, чтобы от него отказаться.
+						</ToolTip>
+					</Button.ToolTip>
+				</Button>
+			</DockPanel>
+			
+		</Grid>
+		<Grid Grid.Row="1">
 		<DataGrid x:Name="grid" AutoGenerateColumns="False" FontSize="12" ColumnHeaderStyle="{DynamicResource ColumnHeaderStyle1}" VerticalScrollBarVisibility="Hidden"
-				  Foreground="{DynamicResource Main}" FontFamily="Segoe Print Bold" HorizontalContentAlignment="Center" HorizontalAlignment="Stretch">
+				  Foreground="{DynamicResource Main}" FontFamily="Segoe Print Bold" HorizontalContentAlignment="Center" Margin="10" HorizontalScrollBarVisibility="Visible" Background="{DynamicResource VeryLightText}" HorizontalAlignment="Stretch">
 			<DataGrid.Columns>
-				<DataGridTextColumn x:Name="fieldFilm"   Binding="{Binding Name}" IsReadOnly="True"  Header="Фильм" Width="10*"/>
-				<DataGridTextColumn Binding="{Binding Cinema}" IsReadOnly="True"   Header="Кинотеатр" Width="10*"/>
-				<DataGridTextColumn  Binding="{Binding Hall}" IsReadOnly="True" Header="Зал" Width="10*"/>
-				<DataGridTextColumn Binding="{Binding Date, Converter={StaticResource myDateConverter}}" IsReadOnly="True"  Header="Дата" Width="10*"/>
-				<DataGridTextColumn Binding="{Binding Time}" IsReadOnly="True"  Header="Время" Width="10*"/>
-				<DataGridTextColumn Binding="{Binding Row}" IsReadOnly="True"  Header="Ряд" Width="10*"/>
-				<DataGridTextColumn Binding="{Binding Seat}" IsReadOnly="True"  Header="Место" Width="10*"/>
-				<DataGridTextColumn Binding="{Binding Price}" IsReadOnly="True"  Header="Стоимость" Width="10*"/>
-				<DataGridTextColumn Binding="{Binding Unick}" IsReadOnly="True"  Header="Код печати" Visibility="Hidden" Width="10*"/>
+				<DataGridTextColumn x:Name="fieldFilm"   Binding="{Binding Name}" IsReadOnly="True"  Header="Фильм" />
+				<DataGridTextColumn Binding="{Binding Cinema}" IsReadOnly="True"   Header="Кинотеатр" />
+				<DataGridTextColumn  Binding="{Binding Hall}" IsReadOnly="True" Header="Зал" />
+				<DataGridTextColumn Binding="{Binding Date, Converter={StaticResource myDateConverter}}" IsReadOnly="True"  Header="Дата" />
+				<DataGridTextColumn Binding="{Binding Time}" IsReadOnly="True"  Header="Время" />
+				<DataGridTextColumn Binding="{Binding Row}" IsReadOnly="True"  Header="Ряд" />
+				<DataGridTextColumn Binding="{Binding Seat}" IsReadOnly="True"  Header="Место" />
+				<DataGridTextColumn Binding="{Binding Price}" IsReadOnly="True"  Header="Стоимость" />
+				<DataGridTextColumn Binding="{Binding Unick}" IsReadOnly="True"  Header="Код печати"  />
 			</DataGrid.Columns>
 			<DataGrid.ItemContainerStyle>
 				<Style TargetType="DataGridRow">
 					<EventSetter Event="MouseDoubleClick" Handler="Row_DoubleClick"/>
-				</Style>
+						<EventSetter Event="PreviewMouseRightButtonDown"  Handler="DataGridRow_PreviewMouseButtonDown"/>
+					</Style>
 			</DataGrid.ItemContainerStyle>
 		</DataGrid>
-		<Button Content="Добавить сохранённый билет" Click="AddTicketFromXLMFile"></Button>
-		<Button Content="Сменить пользователя" Click="ChangeUser"></Button>
+		</Grid>
+		<Grid Grid.Row="2">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition/>
+				<ColumnDefinition/>
+			</Grid.ColumnDefinitions>
+			<Grid Grid.Column="0">
+				<Button  Content="Добавить сохранённый билет" Margin="5 2 5 2" FontFamily="Segoe Print Bold" Click="AddTicketFromXLMFile"></Button>
+			</Grid>
+			<Grid Grid.Column="1">
+				<Button Content="Сменить пользователя" Click="ChangeUser"  Margin="5 2 5 2" FontFamily="Segoe Print Bold"></Button>
+			</Grid>
+		
+			
+		</Grid>
 	</Grid>
 </Page>

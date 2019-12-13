@@ -5,12 +5,12 @@ CREATE PROCEDURE CheckSeats
 @message nvarchar(50) = NULL output
 AS BEGIN
 	IF @row>(SELECT HALL.ROWS FROM HALL WHERE NAME=@hall) or @row<0
-	set @message='¬ зале не существует такого р€да'
+	set @message='¬ зале не существует такого р€да';
 	else IF @seat>(SELECT HALL.SEATS FROM HALL WHERE NAME=@hall) or @seat<0
-	set @message='¬ зале не существует такого места'
+	set @message='¬ зале не существует такого места';
 	IF @row=any(SELECT T.ROW FROM TICKETS T INNER JOIN SESSION S ON S.ID=T.SESSION_ID where SEAT=@seat) 
 		and @seat=any(SELECT SEAT FROM TICKETS T INNER JOIN SESSION S ON S.ID=T.SESSION_ID where T.ROW=@row) 
-	set @message='Ёто место уже зан€то'
+	set @message='Ёто место уже зан€то';
 END;
 
 DROP PROCEDURE CheckSeats;

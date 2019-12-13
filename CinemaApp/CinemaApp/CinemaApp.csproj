@@ -96,8 +96,14 @@
     <Compile Include="Pages\ActorsPages.xaml.cs">
       <DependentUpon>ActorsPages.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\AdminPage.xaml.cs">
+      <DependentUpon>AdminPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\ByePage.xaml.cs">
       <DependentUpon>ByePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\CinemaEditPage.xaml.cs">
+      <DependentUpon>CinemaEditPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\CinemaPage.xaml.cs">
       <DependentUpon>CinemaPage.xaml</DependentUpon>
@@ -111,6 +117,33 @@
     <Compile Include="Pages\GenresPage.xaml.cs">
       <DependentUpon>GenresPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\InsertActorPage.xaml.cs">
+      <DependentUpon>InsertActorPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\InsertCinema.xaml.cs">
+      <DependentUpon>InsertCinema.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\InsertHallPage.xaml.cs">
+      <DependentUpon>InsertHallPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\InsertMovie.xaml.cs">
+      <DependentUpon>InsertMovie.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\InsertSessionPage.xaml.cs">
+      <DependentUpon>InsertSessionPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\InsertStudioPage.xaml.cs">
+      <DependentUpon>InsertStudioPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\MovieEditPage.xaml.cs">
+      <DependentUpon>MovieEditPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\PageAddActor.xaml.cs">
+      <DependentUpon>PageAddActor.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\PageAddGenre.xaml.cs">
+      <DependentUpon>PageAddGenre.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\StudiosPage.xaml.cs">
       <DependentUpon>StudiosPage.xaml</DependentUpon>
     </Compile>
@@ -118,13 +151,13 @@
       <DependentUpon>TicketPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Resources\DateTimeToDateConverter.cs" />
+    <Compile Include="UserControls\AddSeat.xaml.cs">
+      <DependentUpon>AddSeat.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\filmButton.xaml.cs">
       <DependentUpon>filmButton.xaml</DependentUpon>
     </Compile>
     <Compile Include="Validator.cs" />
-    <Compile Include="Windows\AddSeat.xaml.cs">
-      <DependentUpon>AddSeat.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Windows\Log_in.xaml.cs">
       <DependentUpon>Log_in.xaml</DependentUpon>
     </Compile>
@@ -135,7 +168,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\AdminPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\ByePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\CinemaEditPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -155,6 +196,42 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\InsertActorPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\InsertCinema.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\InsertHallPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\InsertMovie.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\InsertSessionPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\InsertStudioPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\MovieEditPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\PageAddActor.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\PageAddGenre.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\StudiosPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -163,11 +240,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UserControls\filmButton.xaml">
+    <Page Include="UserControls\AddSeat.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Windows\AddSeat.xaml">
+    <Page Include="UserControls\filmButton.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -214,6 +291,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="ClassDiagram.cd" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -243,7 +321,9 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Resources\icon2.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

@@ -26,7 +26,7 @@
 			</Button>
 		</Grid>
 		<Grid Grid.Row="1">
-			<TextBlock  Text="Regestration" TextAlignment="Center" Style="{DynamicResource FontB}" />
+			<TextBlock  Text="Registration" TextAlignment="Center" Style="{DynamicResource FontB}" />
 		</Grid>
 		<Grid Grid.Row="2">
 			<Border Margin="10 5 10 5" CornerRadius="10" >
@@ -73,7 +73,7 @@
 							<Button Margin="5" Click="btnSignIn_Click">Sign in</Button>
 					</Grid>
 					<Grid Grid.Column="1">
-							<Button Margin="5" Click="btnRegestration_Click">Regestration</Button>
+							<Button Margin="5" Click="btnRegestration_Click">Registration</Button>
 					</Grid>
 					</Grid>
 				</DockPanel>

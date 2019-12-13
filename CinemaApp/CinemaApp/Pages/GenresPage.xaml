@@ -4,11 +4,52 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:CinemaApp.Pages"
-      mc:Ignorable="d" 
+	  xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+	  mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="GenresPage">
 
-    <Grid>
-		
-    </Grid>
+    <Grid Background="{x:Null}">
+		<Grid.RowDefinitions>
+			<RowDefinition Height="5*"/>
+			<RowDefinition Height="17*"/>
+			<RowDefinition Height="10*"/>
+			<RowDefinition Height="80*"/>
+		</Grid.RowDefinitions>
+		<Grid Grid.Row="0" x:Name="tooltipGrid">
+			<Button HorizontalAlignment="Right"   Width="{Binding ActualHeight, ElementName=tooltipGrid}" Padding="0" Height="{Binding ActualHeight, ElementName=tooltipGrid}">
+				<materialDesign:PackIcon Kind="QuestionMarkRhombusOutline" Foreground="{DynamicResource VeryLightText}"  HorizontalAlignment="Center" Width="{Binding ActualHeight, ElementName=tooltipGrid}" VerticalAlignment="Center" Height="{Binding ActualHeight, ElementName=tooltipGrid}"/>
+				<Button.ToolTip>
+					<ToolTip  FontFamily="Segoe Print Bold">
+						Кликните два раза на выбранный вами сеанс
+					</ToolTip>
+				</Button.ToolTip>
+			</Button>
+		</Grid>
+		<Grid Grid.Row="1">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition/>
+				<ColumnDefinition/>
+				<ColumnDefinition/>
+			</Grid.ColumnDefinitions>
+			<Grid Grid.Column="0">
+				<ComboBox x:Name="comboGenre1" Foreground="{DynamicResource LightMain}" FontFamily="Segoe Print Bold"  Margin="10" ScrollViewer.VerticalScrollBarVisibility="Hidden" ></ComboBox>
+			</Grid>
+			<Grid Grid.Column="1" x:Name="combo2">
+				<ComboBox x:Name="comboGenre2" Foreground="{DynamicResource LightMain}" FontFamily="Segoe Print Bold"  Margin="10" ScrollViewer.VerticalScrollBarVisibility="Hidden" ></ComboBox>
+			</Grid>
+			<Grid Grid.Column="2">
+				<ComboBox x:Name="comboGenre3" Foreground="{DynamicResource LightMain}" FontFamily="Segoe Print Bold" Margin="10" ScrollViewer.VerticalScrollBarVisibility="Hidden" ></ComboBox>
+			</Grid>
+		</Grid>
+		<Grid Grid.Row="2">
+			<Button Content="Search" FontFamily="Segoe Print Bold" FontSize="12" Click="Button_Click" Margin="4" HorizontalContentAlignment="Center"/>
+		</Grid>
+		<Grid Grid.Row="3">
+			<ScrollViewer VerticalScrollBarVisibility="Hidden">
+				<StackPanel x:Name="listOfFilmsByGenres">
+				</StackPanel>
+			</ScrollViewer>
+		</Grid>
+	</Grid>
 </Page>

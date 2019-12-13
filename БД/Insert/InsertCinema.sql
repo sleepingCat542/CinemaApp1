@@ -1,13 +1,14 @@
 CREATE PROCEDURE InsertCinema
     @name nvarchar(30),
-	@address nvarchar(max),
-	@website nvarchar(max),
+	@address nvarchar(max)=null,
+	@website nvarchar(max)=null,
 	@city nvarchar(30),
 	@halls int,
-	@timetable nvarchar(30),
-	@message nvarchar(200) output
+	@timetable nvarchar(200)=null,
+	@message nvarchar(200) output,
+	@rc int output
 	AS BEGIN
-	    declare @rc int= 0;
+	    SET @rc = 0;
 		if(@name=any(select NAME from CINEMA where CITY=@city))
 			set @message='Такой кинотеатр уже существует!';
 		else

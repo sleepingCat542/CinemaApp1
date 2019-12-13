@@ -96,7 +96,7 @@
 					<DockPanel Style="{DynamicResource MenuItem}">
 						<Button Background="{x:Null}" Click="Cinemas_Click"  Height="40">
 							<DockPanel HorizontalAlignment="Left" Width="300" Margin="-17 0 0 0">
-								<materialDesign:PackIcon Kind="GlassTulip" Style="{DynamicResource MenuImg}"/>
+								<materialDesign:PackIcon Kind="City"  Style="{DynamicResource MenuImg}"/>
 								<Label Style="{DynamicResource MenuLabel}" Content="Кинотеатры" Width="196"/>
 							</DockPanel>
 						</Button>
@@ -105,7 +105,7 @@
 					<DockPanel Style="{DynamicResource MenuItem}">
 						<Button Background="{x:Null}" Click="Actors_Click"  Height="40">
 							<DockPanel HorizontalAlignment="Left" Width="300" Margin="-17 0 0 0">
-								<materialDesign:PackIcon Kind="GlassTulip" Style="{DynamicResource MenuImg}"/>
+								<materialDesign:PackIcon Kind="FaceOutline" Style="{DynamicResource MenuImg}"/>
 								<Label Style="{DynamicResource MenuLabel}" Content="Актёры" Width="196"/>
 							</DockPanel>
 						</Button>
@@ -115,7 +115,7 @@
 					<DockPanel Style="{DynamicResource MenuItem}">
 						<Button Background="{x:Null}" Click="Studios_Click"   Height="40">
 							<DockPanel HorizontalAlignment="Left" Width="300" Margin="-17 0 0 0">
-								<materialDesign:PackIcon Kind="GlassTulip" Style="{DynamicResource MenuImg}"/>
+								<materialDesign:PackIcon Kind="VideoVintage" Style="{DynamicResource MenuImg}"/>
 								<Label Style="{DynamicResource MenuLabel}" Content="Студии" Width="196"/>
 							</DockPanel>
 						</Button>
@@ -124,17 +124,25 @@
 					<DockPanel Style="{DynamicResource MenuItem}">
 						<Button Background="{x:Null}" Click="Genres_Click"   Height="40">
 							<DockPanel HorizontalAlignment="Left" Width="300" Margin="-17 0 0 0">
-								<materialDesign:PackIcon Kind="GlassTulip" Style="{DynamicResource MenuImg}"/>
+								<materialDesign:PackIcon Kind="ArrowBottomDropCircleOutline" Style="{DynamicResource MenuImg}"/>
 								<Label Style="{DynamicResource MenuLabel}" Content="Жанры" Width="196"/>
 							</DockPanel>
 						</Button>
 					</DockPanel>
 
-					<DockPanel x:Name="UsersTickets" Style="{DynamicResource MenuItem}">
+					<DockPanel x:Name="UsersTickets"   Style="{DynamicResource MenuItem}">
 						<Button Background="{x:Null}"  Click="Tickets_Click"  Height="40">
 							<DockPanel HorizontalAlignment="Left" Width="300" Margin="-17 0 0 0">
-								<materialDesign:PackIcon Kind="GlassTulip" Style="{DynamicResource MenuImg}"/>
+								<materialDesign:PackIcon Kind="Ticket" Style="{DynamicResource MenuImg}"/>
 								<Label Style="{DynamicResource MenuLabel}" Content="Мои билеты" Width="196"/>
+							</DockPanel>
+						</Button>
+					</DockPanel>
+					<DockPanel x:Name="AdminAction"  Style="{DynamicResource MenuItem}">
+						<Button Background="{x:Null}"  Click="Admin_Click"  Height="40">
+							<DockPanel HorizontalAlignment="Left" Width="300" Margin="-17 0 0 0">
+								<materialDesign:PackIcon Kind="InteractionDoubleTap" Style="{DynamicResource MenuImg}"/>
+								<Label Style="{DynamicResource MenuLabel}" Content="Администратор" Width="196"/>
 							</DockPanel>
 						</Button>
 					</DockPanel>
