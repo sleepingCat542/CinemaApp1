@@ -47,3 +47,6 @@ END;
 --	@rc=1;
 
 --	select * from CINEMA;
+
+select id from SESSION where MOVIE_ID=@movie_id AND HALL_ID=@hall_id AND 
+			DATE=(select C3.value('Date[1]', 'date'

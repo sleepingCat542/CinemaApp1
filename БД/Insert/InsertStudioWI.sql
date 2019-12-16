@@ -37,5 +37,7 @@ from OpenRowSet(BULK N'H:\Курсач\Проект\Images\Studio\media-20th-century-fox.png
 declare @countryId varchar(10)= (SELECT ID FROM COUNTRY WHERE NAME = 'США');
 INSERT INTO STUDIO (NAME, COUNTRY_ID, YEAR_OF_FOUNDATION, IMAGE) select 'New Line Cinema', @countryId, 1967,  BulkColumn
 from OpenRowSet(BULK N'H:\Курсач\Проект\Images\Studio\520px-New_Line_Cinema.svg.png', SINGLE_BLOB ) AS Файл; 
+declare @countryId varchar(10)= (SELECT ID FROM COUNTRY WHERE NAME = 'США');
+INSERT INTO STUDIO (NAME, COUNTRY_ID, YEAR_OF_FOUNDATION) select 'Signature Films', @countryId, 2006;
 
 select Name from STUDIO;

@@ -24,3 +24,10 @@ CREATE PROCEDURE AddGenre
 	exec AddGenre @nameGenre='Драма', @nameFilm='Малыш Джо', @rc=@rrc output;
 	declare @rrc int=0;
 	exec AddGenre @nameGenre='Драма', @nameFilm='Хороший Лжец', @rc=@rrc output;
+	declare @rrc int=0;
+	exec AddGenre @nameGenre='Детектив', @nameFilm='Хороший Лжец', @rc=@rrc output;
+	declare @rrc int=0;
+	exec AddGenre @nameGenre='Драма', @nameFilm='Курьер', @rc=@rrc output;
+	exec AddGenre @nameGenre='Триллер', @nameFilm='Курьер', @rc=@rrc output;
+	declare @rrc int=0;
+	exec AddGenre @nameGenre='Драма', @nameFilm='Во все тяжкое', @rc=@rrc output;

@@ -31,7 +31,13 @@ CREATE PROCEDURE AddActor
 	exec AddActor @name = N'Мэтт', @surname = N'Дэймон', @nameFilm='Ford против Ferrari', @rc=@rrc output;
 	exec AddActor @name = N'Катрина', @surname = N'Балф', @nameFilm='Ford против Ferrari', @rc=@rrc output;
 	exec AddActor @name = N'Джош', @surname = N'Лукас', @nameFilm='Ford против Ferrari', @rc=@rrc output;
+
+		declare @rrc int=0;
 	exec AddActor @name = N'Хелен', @surname = N'Миррен', @nameFilm='Хороший лжец', @rc=@rrc output;
 	exec AddActor @name = N'Джим', @surname = N'Картер', @nameFilm='Хороший лжец', @rc=@rrc output;
 	exec AddActor @name = N'Иэн', @surname = N'Маккеллен', @nameFilm='Хороший лжец', @rc=@rrc output;
 	exec AddActor @name = N'Рассел', @surname = N'Тови', @nameFilm='Хороший лжец', @rc=@rrc output;
+	declare @rrc int=0;
+	exec AddActor @name = N'Демлот', @surname = N'Марллуни', @nameFilm='Курьер', @rc=@rrc output;
+	exec AddActor @name = N'Кристиан', @surname = N'Бэйл', @nameFilm='Курьер', @rc=@rrc output;
+	exec AddActor @name = N'Джош', @surname = N'Лукас', @nameFilm='Курьер', @rc=@rrc output;

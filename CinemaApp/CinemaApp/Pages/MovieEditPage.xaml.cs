@@ -109,15 +109,15 @@ namespace CinemaApp.Pages
             byte[] imgByteArr = null;
             byte[] videoByteArr = null;
 
-            if (imageName != "")
+            if (imageName !=null)
             {
                 FileStream fs = new FileStream(imageName, FileMode.Open, FileAccess.Read);
                 imgByteArr = new byte[fs.Length];
                 fs.Read(imgByteArr, 0, Convert.ToInt32(fs.Length));
                 fs.Close();
             }
-
-            if (videoName != "")
+            
+            if (videoName != null)
             {
                 FileStream fs = new FileStream(videoName, FileMode.Open, FileAccess.Read);
                 videoByteArr = new byte[fs.Length];
